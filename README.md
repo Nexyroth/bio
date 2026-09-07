@@ -7,7 +7,7 @@
 > **Chào mừng bạn đến với Hệ sinh thái Nexyroth!**  
 > Nơi tổng hợp các dự án Web OS, công cụ thử nghiệm và các tựa game thuần JavaScript chất lượng cao.
 
-🌐 **Trang chủ chính thức:** [https://nexyroth.github.io/Nexyroth](https://nexyroth.github.io/Nexyroth)
+🌐 **Trang chủ chính thức:** [https://nexyroth.github.io/bio](https://nexyroth.github.io/bio)
 
 ---
 
