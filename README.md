@@ -24,7 +24,7 @@
 
 | Dự Án | Loại | Mô Tả Ngắn | Trạng Thái | Link Trải Nghiệm |
 | :--- | :--- | :--- | :---: | :---: |
-| 🖥️ **Nexyroth OS** | Web OS / Landing | Giao diện quản lý hệ sinh thái, thông tin và công cụ cá nhân. | 🟢 Active | [Khám Phá OS](https://nexyroth.github.io/Nexyroth) |
+| 🖥️ **Nexyroth OS** | Web OS / Landing | Giao diện quản lý hệ sinh thái, thông tin và công cụ cá nhân. | 🟢 Active | [Khám Phá OS](https://nexyroth.github.io/NexyrothOS) |
 | ⚔️ **Clicker RPG** | Web Game | Game Clicker/Idle 3 tầng Reset, Boss Event, 9 Pet & Gacha Thần Thú. | 🟢 v7.4 Hotfix | [Chơi Ngay](https://nexyroth.github.io/clicker-game/) |
 | 👻 **Project Ghost** | Web App | Dự án bí mật đang trong quá trình nghiên cứu và phát triển. | 🟡 In Dev | *Coming Soon* |
 
