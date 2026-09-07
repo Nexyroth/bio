@@ -279,6 +279,8 @@
             width: fit-content;
             margin: 0 auto 3rem;
             backdrop-filter: blur(12px);
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .tab-btn {
@@ -585,7 +587,7 @@
             </h1>
 
             <p class="hero-sub">
-                Hệ sinh thái cá nhân, Web OS &amp; Các dự án Game thử nghiệm.
+                Hệ sinh thái cá nhân, Web OS, Game &amp; Security Lab.
             </p>
 
             <div class="hero-actions">
@@ -611,6 +613,9 @@
                 <button class="tab-btn" data-tab="tab-game" role="tab" aria-selected="false">
                     <span class="icon">🎮</span> Game Zone
                 </button>
+                <button class="tab-btn" data-tab="tab-security" role="tab" aria-selected="false">
+                    <span class="icon">🔒</span> Security Lab
+                </button>
             </div>
 
             <!-- ===== TAB 1: OS ===== -->
@@ -625,7 +630,7 @@
                             hệ sinh thái, tích hợp công cụ, thông tin cá nhân và trải nghiệm người dùng
                             tối ưu theo phong cách hiện đại.
                         </p>
-                        <a href="https://nexyroth.github.io/NexyrothOS" target="_blank" class="card-link">
+                        <a href="https://nexyroth.github.io/Nexyroth" target="_blank" class="card-link">
                             Khám Phá OS <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -665,6 +670,31 @@
                         </span>
                     </div>
 
+                </div>
+            </div>
+
+            <!-- ===== TAB 3: SECURITY LAB ===== -->
+            <div class="tab-content" id="tab-security" role="tabpanel">
+                <div class="cards-grid">
+                    <div class="glass-card tilt-element" data-tilt data-tilt-scale="1.02" data-tilt-glare data-tilt-max-glare="0.08">
+                        <div class="glow-line" style="background:linear-gradient(90deg,transparent,var(--purple-neon),transparent);"></div>
+                        <span class="card-tag purple">SECURITY LAB</span>
+                        <h2 class="card-title">Hacker <span class="highlight" style="color:var(--purple-neon);">Toolkit</span></h2>
+                        <p class="card-desc">
+                            Bộ công cụ mô phỏng các khái niệm an ninh mạng phổ biến.
+                            Thuần HTML, CSS và JavaScript. Không cần backend.
+                            Bao gồm: Port Scanner, Ping Simulator, Subdomain Scanner,
+                            Password Generator, Hash Generator, Crypto Lab.
+                        </p>
+                        <a href="https://nexyroth.github.io/fake_v1/" target="_blank" class="card-link" style="color:var(--purple-neon);">
+                            Mở Toolkit <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <div style="margin-top:1rem;display:flex;gap:6px;flex-wrap:wrap;">
+                            <span style="font-size:0.7rem;background:rgba(157,78,221,0.04);padding:0.15rem 0.7rem;border-radius:40px;border:1px solid rgba(157,78,221,0.06);color:var(--text-secondary);">Simulation</span>
+                            <span style="font-size:0.7rem;background:rgba(157,78,221,0.04);padding:0.15rem 0.7rem;border-radius:40px;border:1px solid rgba(157,78,221,0.06);color:var(--text-secondary);">Web Crypto</span>
+                            <span style="font-size:0.7rem;background:rgba(157,78,221,0.04);padding:0.15rem 0.7rem;border-radius:40px;border:1px solid rgba(157,78,221,0.06);color:var(--text-secondary);">No Backend</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -785,7 +815,8 @@
             const tabs = document.querySelectorAll('.tab-btn');
             const contents = {
                 'tab-os': document.getElementById('tab-os'),
-                'tab-game': document.getElementById('tab-game')
+                'tab-game': document.getElementById('tab-game'),
+                'tab-security': document.getElementById('tab-security')
             };
 
             tabs.forEach(btn => {
@@ -935,8 +966,8 @@
             // 6. CONSOLE BRANDING
             // ============================================
             console.log('┌─────────────────────────────────────────────┐');
-            console.log('│  NEXYROTH HUB  ·  v1.0                    │');
-            console.log('│  Dark Cyberpunk Glassmorphism             │');
+            console.log('│  NEXYROTH HUB  ·  v2.0                    │');
+            console.log('│  Web OS · Game · Security Lab             │');
             console.log('│  Built with ❤️  & Vanilla JS              │');
             console.log('└─────────────────────────────────────────────┘');
 
