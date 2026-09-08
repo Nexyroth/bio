@@ -1,57 +1,127 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexyroth · Digital Builder</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.2/confetti.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js">
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexyroth Hub | Digital Ecosystem</title>
+    <meta name="description" content="Nexyroth Hub - Hệ sinh thái cá nhân, Web OS, Game & các dự án công nghệ thử nghiệm.">
+    <meta property="og:title" content="Nexyroth Hub | Digital Ecosystem">
+    <meta property="og:description" content="Hệ sinh thái cá nhân của Nexyroth - Web OS, Game, Security Lab và nhiều dự án công nghệ.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0b0f19">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- Vanilla Tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
+    <!-- tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js" defer></script>
+
     <style>
         /* ============================================================
-           UI/UX PRO MAX — DESIGN SYSTEM
-           ============================================================ */
-        *, *::before, *::after {
+                   RESET & BASE
+                   ============================================================ */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
-            --bg-primary: #080c16;
-            --bg-card: rgba(255, 255, 255, 0.02);
-            --border-glass: rgba(255, 255, 255, 0.04);
-            --text-primary: #f0f4f8;
-            --text-secondary: #94a3b8;
-            --cyan-neon: #00f2fe;
-            --green-neon: #00ff87;
-            --purple-neon: #9d4edd;
-            --glow-cyan: 0 0 30px rgba(0, 242, 254, 0.12);
-            --glow-green: 0 0 30px rgba(0, 255, 135, 0.10);
-            --glow-purple: 0 0 30px rgba(157, 78, 221, 0.10);
-            --radius-lg: 32px;
-            --radius-md: 20px;
-            --radius-sm: 12px;
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --cyan: #00f2fe;
+            --cyan-dim: rgba(0, 242, 254, 0.15);
+            --green: #00ff87;
+            --green-dim: rgba(0, 255, 135, 0.15);
+            --purple: #9d4edd;
+            --purple-dim: rgba(157, 78, 221, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --text-muted: #6b7a8f;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
         }
-        html { scroll-behavior: smooth; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
         body {
             font-family: var(--font);
             background: var(--bg-primary);
             color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
-        ::-webkit-scrollbar { width: 6px; background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: var(--cyan-neon); border-radius: 12px; box-shadow: var(--glow-cyan); }
-        #particles-canvas {
+
+        ::selection {
+            background: var(--cyan);
+            color: var(--bg-primary);
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: inherit;
+        }
+
+        /* ============================================================
+                   SCROLLBAR
+                   ============================================================ */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--cyan);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00d4e6;
+        }
+
+        /* ============================================================
+                   PARTICLES WRAPPER
+                   ============================================================ */
+        #particles-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -60,816 +130,2316 @@
             z-index: 0;
             pointer-events: none;
         }
-        .glass-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px) saturate(1.05);
-            -webkit-backdrop-filter: blur(20px) saturate(1.05);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
-            padding: 2rem 2rem 2.2rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.08);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
-        }
-        .glass-card .glow-line {
-            position: absolute;
-            top: -1px;
+
+        /* ============================================================
+                   GRID OVERLAY
+                   ============================================================ */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--cyan-neon), transparent);
-            opacity: 0;
-            transition: var(--transition);
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0, 242, 254, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
-        .glass-card:hover .glow-line { opacity: 1; }
+
+        /* ============================================================
+                   GLOW ORBS (ambient)
+                   ============================================================ */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .glow-orb--cyan {
+            width: 500px;
+            height: 500px;
+            background: var(--cyan);
+            top: -10%;
+            right: -5%;
+            opacity: 0.12;
+        }
+        .glow-orb--purple {
+            width: 400px;
+            height: 400px;
+            background: var(--purple);
+            bottom: 0%;
+            left: -10%;
+            opacity: 0.10;
+        }
+        .glow-orb--green {
+            width: 300px;
+            height: 300px;
+            background: var(--green);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.06;
+        }
+
+        /* ============================================================
+                   CONTAINER
+                   ============================================================ */
         .container {
-            max-width: 1120px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
             position: relative;
-            z-index: 1;
-        }
-        .section-pad {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border-glass);
-        }
-        .section-pad:last-of-type { border-bottom: none; }
-        .section-title {
-            font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.6rem;
-        }
-        .section-title .highlight { color: var(--cyan-neon); }
-        .section-title .highlight-green { color: var(--green-neon); }
-        .section-title .highlight-purple { color: var(--purple-neon); }
-        .section-desc {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            max-width: 640px;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
+            z-index: 2;
         }
 
-        /* ===== HERO — NEW IDENTITY ===== */
+        /* ============================================================
+                   GLASSMORPHISM UTILITY
+                   ============================================================ */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .glass-sm {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+        }
+
+        /* ============================================================
+                   NAVBAR
+                   ============================================================ */
+        .navbar {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: calc(100% - 32px);
+            max-width: 1200px;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(11, 15, 25, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: top 0.3s ease, background 0.3s ease;
+        }
+
+        .navbar--scrolled {
+            background: rgba(11, 15, 25, 0.88);
+            border-color: rgba(0, 242, 254, 0.15);
+        }
+
+        .navbar-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .navbar-brand .brand-highlight {
+            color: var(--cyan);
+        }
+        .navbar-brand .brand-sub {
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            opacity: 0.7;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+        .navbar-links a {
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-radius: 30px;
+            transition: var(--transition);
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+        .navbar-links a:hover,
+        .navbar-links a.active {
+            color: var(--text-primary);
+            background: rgba(0, 242, 254, 0.08);
+        }
+        .navbar-links a.active {
+            color: var(--cyan);
+        }
+        .navbar-links a .nav-indicator {
+            display: none;
+        }
+
+        .navbar-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .navbar-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+        .navbar-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .navbar-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .navbar-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile nav */
+        .navbar-mobile {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 16px;
+            right: 16px;
+            background: rgba(11, 15, 25, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 20px;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 999;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            transform: translateY(-20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        .navbar-mobile.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .navbar-mobile a {
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        .navbar-mobile a:hover,
+        .navbar-mobile a.active {
+            background: rgba(0, 242, 254, 0.08);
+            color: var(--text-primary);
+        }
+
+        /* ============================================================
+                   HERO
+                   ============================================================ */
         .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 80px 0 60px;
+            align-items: center;
+            padding: 120px 0 60px;
             position: relative;
-            z-index: 1;
-            border-bottom: 1px solid var(--border-glass);
+            z-index: 2;
         }
+
+        .hero-content {
+            max-width: 820px;
+        }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(0, 242, 254, 0.04);
-            border: 1px solid rgba(0, 242, 254, 0.06);
-            padding: 0.3rem 1.2rem 0.3rem 0.8rem;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--cyan-neon);
-            width: fit-content;
-            margin-bottom: 2rem;
+            padding: 6px 18px 6px 12px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 40px;
+            font-size: 0.75rem;
             font-weight: 500;
+            color: var(--cyan);
+            letter-spacing: 0.04em;
+            margin-bottom: 28px;
+            text-transform: uppercase;
         }
         .hero-badge .dot {
-            display: inline-block;
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: var(--cyan-neon);
-            animation: pulse-dot 2s ease-in-out infinite;
+            background: var(--cyan);
+            animation: pulse-dot 1.8s ease-in-out infinite;
         }
+
         @keyframes pulse-dot {
-            0%, 100% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); }
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: scale(0.7);
+            }
         }
+
         .hero-title {
-            font-size: clamp(3.2rem, 8vw, 5.6rem);
-            font-weight: 700;
-            letter-spacing: -2px;
+            font-size: clamp(2.8rem, 8vw, 5.6rem);
+            font-weight: 900;
             line-height: 1.05;
-            margin-bottom: 0.4rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
         }
-        .hero-title .neon {
-            color: var(--cyan-neon);
-            text-shadow: 0 0 60px rgba(0, 242, 254, 0.12), 0 0 120px rgba(0, 242, 254, 0.04);
-            display: inline-block;
+        .hero-title .highlight-cyan {
+            color: var(--cyan);
+            text-shadow: 0 0 40px rgba(0, 242, 254, 0.15);
         }
-        .hero-tagline {
-            font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+        .hero-title .highlight-gradient {
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+            font-weight: 400;
             color: var(--text-secondary);
-            max-width: 560px;
-            line-height: 1.8;
-            margin-top: 0.4rem;
-            letter-spacing: 0.3px;
+            max-width: 600px;
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
-        .hero-tagline .highlight {
-            color: var(--green-neon);
+
+        .hero-identity {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
         }
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem 2rem;
-            margin-top: 1.2rem;
-            font-family: var(--font-mono);
+        .hero-identity span {
+            color: var(--text-secondary);
+        }
+
+        /* Terminal panel */
+        .hero-terminal {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 242, 254, 0.12);
+            border-radius: var(--radius-sm);
+            padding: 16px 22px;
+            max-width: 480px;
+            margin-bottom: 32px;
+            font-family: 'Inter', monospace;
             font-size: 0.8rem;
             color: var(--text-secondary);
-            background: rgba(0,0,0,0.2);
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-glass);
-            max-width: fit-content;
+            line-height: 1.8;
+            backdrop-filter: blur(4px);
         }
-        .hero-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .hero-terminal .term-line {
+            display: flex;
+            gap: 10px;
         }
-        .hero-meta .label { color: var(--text-muted); }
-        .hero-meta .value { color: var(--cyan-neon); }
+        .hero-terminal .term-prompt {
+            color: var(--cyan);
+            font-weight: 600;
+        }
+        .hero-terminal .term-key {
+            color: var(--text-muted);
+        }
+        .hero-terminal .term-value {
+            color: var(--green);
+            font-weight: 500;
+        }
+        .hero-terminal .term-value--cyan {
+            color: var(--cyan);
+        }
+        .hero-terminal .term-value--purple {
+            color: var(--purple);
+        }
+
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2.4rem;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 40px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            letter-spacing: 0.02em;
+            position: relative;
+            overflow: hidden;
         }
         .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--cyan-neon);
-            color: #0b0f19;
-            padding: 0.75rem 2.2rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            font-family: var(--font);
+            background: var(--cyan);
+            color: var(--bg-primary);
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.15);
         }
         .btn-primary:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 60px rgba(0, 242, 254, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.25);
         }
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+        .btn-secondary {
             background: transparent;
-            border: 1px solid var(--border-glass);
             color: var(--text-primary);
-            padding: 0.75rem 2.2rem;
-            border-radius: 60px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            font-family: var(--font);
+            border-color: rgba(255, 255, 255, 0.15);
         }
-        .btn-outline:hover {
-            border-color: var(--cyan-neon);
-            color: var(--cyan-neon);
+        .btn-secondary:hover {
+            border-color: var(--cyan);
+            background: rgba(0, 242, 254, 0.04);
+            transform: translateY(-2px);
         }
-        .btn-outline.green:hover { border-color: var(--green-neon); color: var(--green-neon); }
-        .btn-outline.purple:hover { border-color: var(--purple-neon); color: var(--purple-neon); }
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+            border-color: transparent;
+        }
+        .btn-ghost:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.04);
+        }
 
-        /* ===== ABOUT — IDENTITY FOCUS ===== */
-        .identity-grid {
+        /* ============================================================
+                   SECTION COMMON
+                   ============================================================ */
+        section {
+            padding: 80px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .section-title .highlight {
+            color: var(--cyan);
+        }
+        .section-title .highlight-purple {
+            color: var(--purple);
+        }
+        .section-title .highlight-green {
+            color: var(--green);
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        /* ============================================================
+                   ABOUT
+                   ============================================================ */
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 1.5rem;
+            gap: 40px;
+            align-items: start;
         }
-        .identity-card .icon-big {
-            font-size: 2.4rem;
-            margin-bottom: 0.4rem;
-            display: block;
+
+        .about-card {
+            padding: 32px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
         }
-        .identity-card h3 {
-            font-weight: 600;
+        .about-card:hover {
+            border-color: rgba(0, 242, 254, 0.15);
+        }
+
+        .about-card .about-title {
             font-size: 1.2rem;
-            margin-bottom: 0.2rem;
-            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .identity-card p {
+        .about-card .about-title .icon-cyan {
+            color: var(--cyan);
+        }
+
+        .about-card p {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.8;
+            margin-bottom: 16px;
         }
-        .identity-card .tag {
-            display: inline-block;
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0.1rem 0.8rem;
-            border-radius: 60px;
-            background: rgba(0, 242, 254, 0.04);
-            border: 1px solid rgba(0, 242, 254, 0.06);
-            color: var(--cyan-neon);
-            margin-top: 0.6rem;
+        .about-card p:last-child {
+            margin-bottom: 0;
         }
 
-        /* ===== INTERESTS & TECH ===== */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
-        .interest-card {
-            text-align: center;
-            padding: 1.8rem 1.2rem;
-        }
-        .interest-card .icon { font-size: 2.6rem; margin-bottom: 0.4rem; display: block; }
-        .interest-card h3 { font-weight: 500; font-size: 1.1rem; margin-bottom: 0.2rem; color: var(--text-primary); }
-        .interest-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; }
-
-        .status-badge {
-            display: inline-block;
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0.2rem 0.9rem;
-            border-radius: 60px;
-            margin-bottom: 0.6rem;
-        }
-        .status-badge.active {
-            background: rgba(0, 255, 135, 0.04);
-            border: 1px solid rgba(0, 255, 135, 0.06);
-            color: var(--green-neon);
-        }
-        .status-badge.dev {
-            background: rgba(0, 242, 254, 0.04);
-            border: 1px solid rgba(0, 242, 254, 0.06);
-            color: var(--cyan-neon);
-        }
-        .status-badge.experimental {
-            background: rgba(157, 78, 221, 0.04);
-            border: 1px solid rgba(157, 78, 221, 0.06);
-            color: var(--purple-neon);
-        }
-        .status-badge.planned {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-glass);
-            color: var(--text-secondary);
-        }
-
-        .tech-tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-glass);
-            padding: 0.2rem 1.2rem;
-            border-radius: 60px;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            font-family: var(--font-mono);
-            transition: var(--transition);
-        }
-        .tech-tag:hover { border-color: var(--cyan-neon); color: var(--text-primary); }
-
-        .inline-code {
-            font-family: var(--font-mono);
-            color: var(--cyan-neon);
-            background: rgba(0, 242, 254, 0.04);
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-
-        .footer {
-            padding: 2.5rem 0 2rem;
-            border-top: 1px solid var(--border-glass);
-            margin-top: 40px;
-            position: relative;
-            z-index: 1;
-        }
-        .footer .container {
+        .about-tags {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
+            gap: 8px;
+            margin-top: 12px;
         }
-        .footer .brand {
+        .about-tags span {
+            padding: 4px 14px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.08);
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================================
+                   FOCUS / INTERESTS
+                   ============================================================ */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 20px;
+        }
+
+        .focus-card {
+            padding: 24px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .focus-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 242, 254, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .focus-card .focus-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--cyan);
+        }
+        .focus-card .focus-icon.green {
+            color: var(--green);
+        }
+        .focus-card .focus-icon.purple {
+            color: var(--purple);
+        }
+        .focus-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .focus-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ============================================================
+                   ECOSYSTEM
+                   ============================================================ */
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        .eco-card {
+            padding: 28px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .eco-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .eco-card:hover::before {
+            opacity: 1;
+        }
+        .eco-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 242, 254, 0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+        .eco-card .eco-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--cyan);
+        }
+        .eco-card .eco-icon.green {
+            color: var(--green);
+        }
+        .eco-card .eco-icon.purple {
+            color: var(--purple);
+        }
+        .eco-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .eco-card p {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            letter-spacing: 0.5px;
+            line-height: 1.6;
         }
-        .footer .brand .hl { color: var(--cyan-neon); font-weight: 500; }
-        .footer .social { display: flex; gap: 1.2rem; }
-        .footer .social a {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
+        .eco-card .eco-status {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 3px 14px;
+            border-radius: 30px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.10);
+            color: var(--cyan);
+        }
+        .eco-card .eco-status.green {
+            color: var(--green);
+            border-color: rgba(0, 255, 135, 0.15);
+            background: rgba(0, 255, 135, 0.06);
+        }
+        .eco-card .eco-status.purple {
+            color: var(--purple);
+            border-color: rgba(157, 78, 221, 0.15);
+            background: rgba(157, 78, 221, 0.06);
+        }
+
+        /* ============================================================
+                   PROJECT TABS
+                   ============================================================ */
+        .tabs-wrapper {
+            margin-top: 12px;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding-bottom: 4px;
+        }
+
+        .tab-btn {
+            padding: 10px 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 40px;
             transition: var(--transition);
-            text-decoration: none;
+            background: transparent;
+            border: 1px solid transparent;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .footer .social a:hover { color: var(--cyan-neon); transform: translateY(-2px); }
-        .footer .copy {
+        .tab-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .tab-btn.active {
+            color: var(--text-primary);
+            background: rgba(0, 242, 254, 0.06);
+            border-color: rgba(0, 242, 254, 0.12);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.04);
+        }
+        .tab-btn .tab-indicator {
+            display: none;
+        }
+        .tab-btn.active .tab-indicator {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            margin-left: 4px;
+            animation: pulse-dot 1.8s ease-in-out infinite;
+        }
+
+        .tab-content {
+            display: none;
+            animation: tabFadeIn 0.5s ease forwards;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes tabFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(16px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .project-card {
+            padding: 28px 26px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 242, 254, 0.12);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+        }
+        .project-card .card-glow {
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.04;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        .project-card:hover .card-glow {
+            opacity: 0.12;
+        }
+        .project-card .card-glow.cyan {
+            background: var(--cyan);
+        }
+        .project-card .card-glow.green {
+            background: var(--green);
+        }
+        .project-card .card-glow.purple {
+            background: var(--purple);
+        }
+
+        .project-card .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .project-card .card-icon {
+            font-size: 2rem;
+            color: var(--cyan);
+        }
+        .project-card .card-icon.green {
+            color: var(--green);
+        }
+        .project-card .card-icon.purple {
+            color: var(--purple);
+        }
+
+        .project-card .card-badge {
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 3px 12px;
+            border-radius: 30px;
+            background: rgba(0, 242, 254, 0.06);
+            border: 1px solid rgba(0, 242, 254, 0.08);
+            color: var(--cyan);
+        }
+        .project-card .card-badge.green {
+            color: var(--green);
+            border-color: rgba(0, 255, 135, 0.12);
+            background: rgba(0, 255, 135, 0.04);
+        }
+        .project-card .card-badge.purple {
+            color: var(--purple);
+            border-color: rgba(157, 78, 221, 0.12);
+            background: rgba(157, 78, 221, 0.04);
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .project-card .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 16px;
+        }
+
+        .project-card .card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .project-card .card-tech span {
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 2px 12px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-muted);
+        }
+
+        .project-card .card-status {
             font-size: 0.7rem;
-            color: #4a5a6a;
-            width: 100%;
+            font-weight: 600;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .project-card .card-status .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        .project-card .card-status .dot.cyan {
+            background: var(--cyan);
+        }
+        .project-card .card-status .dot.purple {
+            background: var(--purple);
+        }
+
+        .project-card .card-cta {
+            align-self: flex-start;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--cyan);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+        .project-card .card-cta:hover {
+            color: var(--text-primary);
+            border-bottom-color: var(--cyan);
+            gap: 14px;
+        }
+        .project-card .card-cta.green {
+            color: var(--green);
+        }
+        .project-card .card-cta.green:hover {
+            border-bottom-color: var(--green);
+        }
+        .project-card .card-cta.purple {
+            color: var(--purple);
+        }
+        .project-card .card-cta.purple:hover {
+            border-bottom-color: var(--purple);
+        }
+
+        /* Coming soon card */
+        .project-card.coming {
+            opacity: 0.7;
+        }
+        .project-card.coming:hover {
+            opacity: 0.9;
+        }
+        .project-card.coming .card-status {
+            color: var(--text-muted);
+        }
+        .project-card.coming .card-status .dot {
+            background: var(--text-muted);
+            animation: none;
+        }
+
+        /* ============================================================
+                   TECH STACK
+                   ============================================================ */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .tech-item {
+            padding: 8px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        .tech-item:hover {
+            border-color: rgba(0, 242, 254, 0.15);
+            color: var(--text-primary);
+            background: rgba(0, 242, 254, 0.04);
+        }
+
+        /* ============================================================
+                   CURRENTLY BUILDING
+                   ============================================================ */
+        .building-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .building-card {
+            padding: 22px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+        .building-card:hover {
+            border-color: rgba(0, 242, 254, 0.10);
+        }
+        .building-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .building-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .building-card .build-status {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 2px 12px;
+            border-radius: 30px;
+            background: rgba(0, 255, 135, 0.06);
+            border: 1px solid rgba(0, 255, 135, 0.08);
+            color: var(--green);
+        }
+        .building-card .build-status.cyan {
+            color: var(--cyan);
+            border-color: rgba(0, 242, 254, 0.10);
+            background: rgba(0, 242, 254, 0.04);
+        }
+        .building-card .build-status.purple {
+            color: var(--purple);
+            border-color: rgba(157, 78, 221, 0.10);
+            background: rgba(157, 78, 221, 0.04);
+        }
+
+        /* ============================================================
+                   BUILD PHILOSOPHY (Pipeline)
+                   ============================================================ */
+        .philosophy-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 8px 20px;
+            padding: 24px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            margin-top: 12px;
+        }
+        .philosophy-flow .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+        .philosophy-flow .step .num {
+            color: var(--cyan);
+            font-weight: 800;
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+        .philosophy-flow .arrow {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            opacity: 0.3;
+        }
+        .philosophy-flow .step.active {
+            color: var(--text-primary);
+        }
+        .philosophy-flow .step.active .num {
+            opacity: 1;
+            color: var(--cyan);
+        }
+
+        /* ============================================================
+                   VISION
+                   ============================================================ */
+        .vision-block {
+            max-width: 760px;
+        }
+        .vision-block p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .vision-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============================================================
+                   GITHUB CTA
+                   ============================================================ */
+        .github-cta {
             text-align: center;
-            border-top: 1px solid var(--border-glass);
-            padding-top: 1.2rem;
-            margin-top: 0.8rem;
-            letter-spacing: 0.3px;
+            padding: 40px 32px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            box-shadow: var(--glass-shadow);
+        }
+        .github-cta .github-icon {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .github-cta h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .github-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
+        .footer {
+            padding: 40px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .footer .footer-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+        .footer .footer-brand span {
+            color: var(--cyan);
+        }
+        .footer .footer-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .footer .footer-tagline {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+        .footer .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .footer .footer-social a {
+            color: var(--text-muted);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        .footer .footer-social a:hover {
+            color: var(--cyan);
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .hero-title {
+                font-size: clamp(2.4rem, 7vw, 4rem);
+            }
         }
 
         @media (max-width: 768px) {
-            .grid-2, .grid-3, .identity-grid { grid-template-columns: 1fr; }
-            .hero-title { font-size: 2.6rem; }
-            .glass-card { padding: 1.5rem; }
-            .hero-meta { flex-direction: column; gap: 0.4rem; align-items: flex-start; }
-            .footer .container { flex-direction: column; align-items: center; text-align: center; }
-        }
-        @media (max-width: 480px) {
-            .hero-title { font-size: 2rem; }
-            .hero-actions { flex-direction: column; align-items: stretch; }
-            .btn-primary, .btn-outline { justify-content: center; }
+            .navbar {
+                top: 12px;
+                padding: 0 16px;
+                height: 56px;
+                border-radius: 28px;
+                width: calc(100% - 24px);
+            }
+            .navbar-links {
+                display: none;
+            }
+            .navbar-hamburger {
+                display: flex;
+            }
+
+            .navbar-mobile {
+                display: flex;
+            }
+
+            .hero {
+                padding: 100px 0 40px;
+                min-height: auto;
+            }
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+            .hero-terminal {
+                font-size: 0.7rem;
+                padding: 14px 16px;
+            }
+            .hero-actions .btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+            .section-title {
+                font-size: clamp(1.6rem, 5vw, 2.2rem);
+            }
+
+            .focus-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 14px;
+            }
+            .focus-card {
+                padding: 18px 14px;
+            }
+
+            .ecosystem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-nav {
+                gap: 4px;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
+
+            .tech-grid {
+                gap: 8px;
+            }
+            .tech-item {
+                padding: 6px 14px;
+                font-size: 0.7rem;
+            }
+
+            .building-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-flow {
+                gap: 4px 12px;
+                padding: 16px 12px;
+            }
+            .philosophy-flow .step {
+                font-size: 0.75rem;
+            }
+            .philosophy-flow .arrow {
+                font-size: 0.8rem;
+            }
+
+            .github-cta {
+                padding: 28px 20px;
+            }
+
+            .footer {
+                padding: 28px 0 20px;
+            }
         }
 
-        .tilt-element { transform-style: preserve-3d; }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .hero-sub {
+                font-size: 0.95rem;
+            }
+            .hero-terminal {
+                font-size: 0.65rem;
+                padding: 12px 14px;
+            }
+            .hero-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hero-actions .btn {
+                justify-content: center;
+                width: 100%;
+            }
+            .tab-btn {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+                gap: 4px;
+            }
+            .project-card {
+                padding: 20px 18px;
+            }
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-d1 { transition-delay: 0.05s; }
-        .reveal-d2 { transition-delay: 0.1s; }
-        .reveal-d3 { transition-delay: 0.15s; }
-        .reveal-d4 { transition-delay: 0.2s; }
-        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+        /* ============================================================
+                   REDUCED MOTION
+                   ============================================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .hero-badge .dot {
+                animation: none !important;
+            }
+            .tab-content {
+                animation: none !important;
+            }
+            .project-card .card-status .dot {
+                animation: none !important;
+            }
+        }
+
+        /* ============================================================
+                   CURSOR GLOW (desktop only)
+                   ============================================================ */
+        .cursor-glow {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.04) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+            .cursor-glow {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 768px) {
+            .cursor-glow {
+                display: none;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <canvas id="particles-canvas"></canvas>
 
-    <!-- ===== HERO — NEW IDENTITY ===== -->
-    <section class="hero">
+    <!-- Ambient Glow Orbs -->
+    <div class="glow-orb glow-orb--cyan"></div>
+    <div class="glow-orb glow-orb--purple"></div>
+    <div class="glow-orb glow-orb--green"></div>
+
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+
+    <!-- Particles Container -->
+    <div id="particles-container"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ============================================================
+    NAVBAR
+    ============================================================ -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navigation chính">
+        <div class="navbar-brand">
+            NEXYROTH
+            <span class="brand-sub">/ HUB</span>
+        </div>
+
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="#about" data-nav>About</a></li>
+            <li><a href="#projects" data-nav>Projects</a></li>
+            <li><a href="#stack" data-nav>Stack</a></li>
+            <li><a href="#vision" data-nav>Vision</a></li>
+            <li><a href="#github" data-nav>GitHub</a></li>
+        </ul>
+
+        <button class="navbar-hamburger" id="hamburger" aria-label="Mở menu điều hướng" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="navbar-mobile" id="mobileNav" role="navigation" aria-label="Menu điều hướng di động">
+        <a href="#about" data-nav-mobile>About</a>
+        <a href="#projects" data-nav-mobile>Projects</a>
+        <a href="#stack" data-nav-mobile>Stack</a>
+        <a href="#vision" data-nav-mobile>Vision</a>
+        <a href="#github" data-nav-mobile>GitHub</a>
+    </div>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="hero" id="hero">
         <div class="container">
-            <div class="hero-badge">
-                <span class="dot"></span> Đang xây dựng
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    SYSTEM ONLINE — NEXYROTH HUB v1.0
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="highlight-cyan">NEXYROTH</span>
+                    <span class="highlight-gradient">HUB</span>
+                </h1>
+
+                <p class="hero-sub">
+                    "Hệ sinh thái cá nhân, Web OS, Game &amp; các dự án công nghệ thử nghiệm."
+                </p>
+
+                <div class="hero-identity">
+                    <span>DIGITAL BUILDER</span> &nbsp;•&nbsp; WEB • SYSTEMS • GAMES • EXPERIMENTS
+                </div>
+
+                <!-- Terminal Panel -->
+                <div class="hero-terminal" role="status" aria-label="Trạng thái hệ thống">
+                    <div class="term-line">
+                        <span class="term-prompt">$</span>
+                        <span class="term-key">danh_tính</span>
+                        <span class="term-value--cyan">NEXYROTH</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="term-prompt">$</span>
+                        <span class="term-key">trạng_thái</span>
+                        <span class="term-value">ĐANG_XÂY_DỰNG</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="term-prompt">$</span>
+                        <span class="term-key">môi_trường</span>
+                        <span class="term-value--cyan">WEB</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="term-prompt">$</span>
+                        <span class="term-key">chế_độ</span>
+                        <span class="term-value--purple">THỬ_NGHIỆM</span>
+                    </div>
+                    <div class="term-line">
+                        <span class="term-prompt">$</span>
+                        <span class="term-key">hệ_sinh_thái</span>
+                        <span class="term-value">ONLINE</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        KHÁM PHÁ HỆ SINH THÁI
+                    </a>
+                    <a href="https://github.com/Nexyroth" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        XEM GITHUB
+                    </a>
+                </div>
             </div>
-            <h1 class="hero-title">
-                <span class="neon">NEXYROTH</span>
-            </h1>
-            <p class="hero-tagline">
-                Dựng nên thế giới kỹ thuật số của riêng mình.
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section id="about">
+        <div class="container">
+            <div class="section-label">// ABOUT</div>
+            <h2 class="section-title">NEXYROTH — <span class="highlight">Digital Builder</span></h2>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-title">
+                        <span class="icon-cyan">✦</span> Identity
+                    </div>
+                    <p>
+                        Nexyroth là một người trẻ yêu thích công nghệ, lập trình, Web Development, UI/UX,
+                        game, AI, cybersecurity learning và các thử nghiệm kỹ thuật.
+                    </p>
+                    <p>
+                        Thay vì chỉ đọc hoặc tìm hiểu lý thuyết, Nexyroth thích biến ý tưởng thành prototype
+                        và tiếp tục phát triển nó thành sản phẩm có thể sử dụng.
+                    </p>
+                    <div class="about-tags">
+                        <span>Web</span>
+                        <span>UI/UX</span>
+                        <span>Systems</span>
+                        <span>Games</span>
+                        <span>AI</span>
+                        <span>Cybersecurity</span>
+                        <span>Interactive</span>
+                    </div>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-title">
+                        <span class="icon-cyan">⟡</span> Philosophy
+                    </div>
+                    <p>
+                        <strong>Ý TƯỞNG → THỬ NGHIỆM → XÂY DỰNG → CHẠY THẬT → KIỂM TRA → CẢI THIỆN → MỞ RỘNG</strong>
+                    </p>
+                    <p>
+                        Nexyroth không phải công ty. Không phải CEO. Không phải chuyên gia với hàng chục năm kinh nghiệm.
+                        Đây là một hành trình cá nhân — xây dựng một thế giới kỹ thuật số từ những dòng code.
+                    </p>
+                    <div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);">
+                        <span style="color:var(--cyan);">⟡</span> Tự xây dựng, tự thử nghiệm, tự phát triển.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOCUS / INTERESTS
+    ============================================================ -->
+    <section id="focus">
+        <div class="container">
+            <div class="section-label">// FOCUS</div>
+            <h2 class="section-title">Lĩnh vực <span class="highlight">quan tâm</span></h2>
+            <p class="section-desc">
+                Những mảng công nghệ và sáng tạo mà Nexyroth đang theo đuổi và xây dựng.
             </p>
-            <div class="hero-meta">
-                <span><span class="label">danh_tính</span> <span class="value">NEXYROTH</span></span>
-                <span><span class="label">trạng_thái</span> <span class="value">ĐANG_XÂY_DỰNG</span></span>
-                <span><span class="label">môi_trường</span> <span class="value">WEB</span></span>
-                <span><span class="label">chế_độ</span> <span class="value">THỬ_NGHIỆM</span></span>
-                <span><span class="label">hệ_sinh_thái</span> <span class="value">ONLINE</span></span>
-            </div>
-            <div style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 1px;">
-                DIGITAL BUILDER · WEB · SYSTEMS · GAMES · EXPERIMENTS
-            </div>
-            <div class="hero-actions">
-                <a href="#about" class="btn-primary">
-                    <i class="fas fa-arrow-right"></i> Khám phá
-                </a>
-                <a href="#projects" class="btn-outline">
-                    <i class="fas fa-code"></i> Dự án
-                </a>
-                <a href="https://github.com/Nexyroth" target="_blank" class="btn-outline">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <div class="focus-icon">🌐</div>
+                    <h4>Web Development</h4>
+                    <p>HTML, CSS, JavaScript, ES6+, Node.js, Express, Socket.IO</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon green">🎨</div>
+                    <h4>UI / UX</h4>
+                    <p>Thiết kế trải nghiệm, giao diện hiện đại, tương tác mượt mà</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon purple">⚙️</div>
+                    <h4>System Building</h4>
+                    <p>Hệ thống mô-đun, Web OS, kiến trúc linh hoạt</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon green">🎮</div>
+                    <h4>Game Development</h4>
+                    <p>Clicker RPG, game thuần JavaScript, cơ chế tiến trình</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon purple">🧠</div>
+                    <h4>AI &amp; Technology</h4>
+                    <p>Khám phá AI, ứng dụng thông minh, học máy cơ bản</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon">🛡️</div>
+                    <h4>Cybersecurity Learning</h4>
+                    <p>Phòng thí nghiệm an ninh, công cụ học tập, mô phỏng</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon green">✨</div>
+                    <h4>Interactive Experiences</h4>
+                    <p>Trải nghiệm số tương tác, animation, hiệu ứng sống động</p>
+                </div>
+                <div class="focus-card">
+                    <div class="focus-icon purple">🧪</div>
+                    <h4>Experimental Projects</h4>
+                    <p>Thử nghiệm kỹ thuật, prototype, ý tưởng mới</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ABOUT — IDENTITY FOCUS ===== -->
-    <section class="section-pad" id="about">
+    <!-- ============================================================
+    ECOSYSTEM
+    ============================================================ -->
+    <section id="ecosystem">
         <div class="container">
-            <div class="section-title reveal">
-                <span class="highlight">Nexyroth</span> là ai?
-            </div>
-            <div class="section-desc reveal">
-                Một người thích biến những ý tưởng trong đầu thành những thứ có thể thực sự chạy được.
-                Không chỉ học lập trình, không chỉ làm website — mà là xây dựng một hệ sinh thái kỹ thuật số từ những khối ý tưởng nhỏ nhất.
-            </div>
-            <div class="identity-grid">
-                <div class="glass-card identity-card tilt-element reveal reveal-d1">
-                    <div class="glow-line"></div>
-                    <span class="icon-big">🧠</span>
-                    <h3>Ý tưởng → Thử nghiệm</h3>
-                    <p>Mọi thứ bắt đầu từ một ý nghĩ, một câu hỏi, một sự tò mò. Nexyroth thích bắt tay vào thử nghiệm ngay khi có ý tưởng, dù nó kỳ quặc hay chưa rõ ràng.</p>
-                    <span class="tag">EXPERIMENT</span>
+            <div class="section-label">// ECOSYSTEM</div>
+            <h2 class="section-title">Hệ sinh thái <span class="highlight">Nexyroth</span></h2>
+            <p class="section-desc">
+                Một hệ sinh thái cá nhân nơi các dự án được xây dựng độc lập nhưng cùng chia sẻ
+                một định hướng thiết kế, công nghệ và trải nghiệm.
+            </p>
+
+            <div class="ecosystem-grid">
+                <div class="eco-card">
+                    <div class="eco-icon">🖥️</div>
+                    <h4>Nexyroth OS</h4>
+                    <p>Hệ điều hành giao diện web cá nhân, quản lý hệ sinh thái và tích hợp công cụ.</p>
+                    <span class="eco-status">ACTIVE</span>
                 </div>
-                <div class="glass-card identity-card tilt-element reveal reveal-d2">
-                    <div class="glow-line"></div>
-                    <span class="icon-big">⚙️</span>
-                    <h3>Xây dựng → Chạy thật</h3>
-                    <p>Không chỉ dừng ở bản vẽ. Nexyroth xây dựng những thứ có thể chạy được, có thể tương tác, có thể nhìn thấy và cảm nhận — trên trình duyệt, trên web, trong đời thực.</p>
-                    <span class="tag">BUILD</span>
+                <div class="eco-card">
+                    <div class="eco-icon green">🎮</div>
+                    <h4>Nexyroth Clicker RPG</h4>
+                    <p>Game clicker thuần JavaScript với hệ thống tiến trình, nâng cấp, Boss, Skill Tree.</p>
+                    <span class="eco-status green">ACTIVE</span>
                 </div>
-                <div class="glass-card identity-card tilt-element reveal reveal-d3">
-                    <div class="glow-line"></div>
-                    <span class="icon-big">🔄</span>
-                    <h3>Kiểm tra → Cải thiện</h3>
-                    <p>Mỗi sản phẩm là một bài học. Nexyroth kiểm tra, tìm lỗi, sửa chữa, tối ưu và làm lại. Không có gì là hoàn hảo ngay lần đầu — nhưng mọi thứ đều có thể tốt hơn.</p>
-                    <span class="tag">ITERATE</span>
+                <div class="eco-card">
+                    <div class="eco-icon purple">🛡️</div>
+                    <h4>Nexyroth Hacker Toolkit</h4>
+                    <p>Phòng thí nghiệm cybersecurity chạy trên trình duyệt, học tập và mô phỏng công cụ.</p>
+                    <span class="eco-status purple">ACTIVE</span>
                 </div>
-                <div class="glass-card identity-card tilt-element reveal reveal-d4">
-                    <div class="glow-line"></div>
-                    <span class="icon-big">🚀</span>
-                    <h3>Mở rộng → Hệ sinh thái</h3>
-                    <p>Mỗi dự án không đứng độc lập. Nexyroth là một hệ sinh thái đang phát triển — nơi các ứng dụng, công cụ, game và thử nghiệm kết nối với nhau trên cùng một nền tảng.</p>
-                    <span class="tag">ECOSYSTEM</span>
+                <div class="eco-card">
+                    <div class="eco-icon">🧩</div>
+                    <h4>New Experiments</h4>
+                    <p>Các dự án thử nghiệm mới đang được nghiên cứu và phát triển.</p>
+                    <span class="eco-status" style="color:var(--text-muted);border-color:rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);">BUILDING</span>
                 </div>
             </div>
-            <div class="glass-card tilt-element reveal" style="margin-top: 2rem;">
-                <div class="glow-line"></div>
-                <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.9; text-align: center; max-width: 700px; margin: 0 auto;">
-                    Nexyroth không phải là một công ty, không phải một chức danh. Là một người trẻ đam mê công nghệ, thích tự mày mò, tự xây dựng và không ngừng thử nghiệm những điều mới.
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PROJECT TABS
+    ============================================================ -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-label">// PROJECTS</div>
+            <h2 class="section-title">Dự án <span class="highlight">trong hệ sinh thái</span></h2>
+            <p class="section-desc">
+                Các dự án đang hoạt động và phát triển trong hệ sinh thái Nexyroth.
+            </p>
+
+            <div class="tabs-wrapper">
+                <!-- Tabs Nav -->
+                <div class="tabs-nav" role="tablist" aria-label="Danh mục dự án">
+                    <button class="tab-btn active" data-tab="tab1" role="tab" aria-selected="true" aria-controls="tab1">
+                        🖥️ HỆ ĐIỀU HÀNH &amp; ỨNG DỤNG
+                        <span class="tab-indicator"></span>
+                    </button>
+                    <button class="tab-btn" data-tab="tab2" role="tab" aria-selected="false" aria-controls="tab2">
+                        🎮 GAME ZONE
+                        <span class="tab-indicator"></span>
+                    </button>
+                    <button class="tab-btn" data-tab="tab3" role="tab" aria-selected="false" aria-controls="tab3">
+                        🛡️ SECURITY LAB
+                        <span class="tab-indicator"></span>
+                    </button>
+                </div>
+
+                <!-- Tab 1: OS & Apps -->
+                <div class="tab-content active" id="tab1" role="tabpanel">
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="card-glow cyan"></div>
+                            <div class="card-top">
+                                <span class="card-icon">🖥️</span>
+                                <span class="card-badge">CORE OS / WEB APP</span>
+                            </div>
+                            <h3>Nexyroth OS</h3>
+                            <div class="card-status">
+                                <span class="dot cyan"></span> STATUS: ACTIVE
+                            </div>
+                            <p class="card-desc">
+                                Hệ điều hành giao diện web cá nhân của Nexyroth. Nơi quản lý tổng thể hệ sinh thái,
+                                tích hợp công cụ, thông tin cá nhân và trải nghiệm người dùng theo phong cách hiện đại.
+                            </p>
+                            <div class="card-tech">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>ES6+</span>
+                                <span>Modular</span>
+                            </div>
+                            <a href="https://nexyroth.github.io/NexyrothOS" target="_blank" rel="noopener noreferrer" class="card-cta">
+                                KHÁM PHÁ OS →
+                            </a>
+                        </div>
+
+                        <!-- Nexyroth OS detail card (ecosystem insight) -->
+                        <div class="project-card" style="border-color:rgba(0,242,254,0.06);">
+                            <div class="card-glow cyan" style="opacity:0.06;"></div>
+                            <div class="card-top">
+                                <span class="card-icon">🧩</span>
+                                <span class="card-badge" style="color:var(--text-muted);border-color:rgba(255,255,255,0.05);">PLANNED / IN DEV</span>
+                            </div>
+                            <h3>OS Expansion</h3>
+                            <div class="card-status" style="color:var(--text-muted);">
+                                <span class="dot" style="background:var(--text-muted);animation:none;"></span> BUILDING
+                            </div>
+                            <p class="card-desc">
+                                Mở rộng hệ thống mô-đun: Music, Game, Terminal, AI, Social/Chat, File Manager,
+                                Settings, Developer Tools, Store — đang trong kế hoạch phát triển.
+                            </p>
+                            <div class="card-tech">
+                                <span>Modular</span>
+                                <span>Planned</span>
+                            </div>
+                            <span style="font-size:0.7rem;color:var(--text-muted);">COMING SOON</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Game Zone -->
+                <div class="tab-content" id="tab2" role="tabpanel">
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="card-glow green"></div>
+                            <div class="card-top">
+                                <span class="card-icon green">🎮</span>
+                                <span class="card-badge green">FEATURED GAME v7.0</span>
+                            </div>
+                            <h3>Nexyroth Clicker RPG</h3>
+                            <div class="card-status">
+                                <span class="dot" style="background:var(--green);"></span> STATUS: ACTIVE
+                            </div>
+                            <p class="card-desc">
+                                Game Clicker thuần JavaScript với hệ thống tiến trình, nâng cấp và nhiều cơ chế gameplay.
+                                Tích hợp Boss, Skill Tree, Prestige, Nirvana và hệ thống Collection.
+                            </p>
+                            <div class="card-tech">
+                                <span>JavaScript</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>LocalStorage</span>
+                            </div>
+                            <a href="https://nexyroth.github.io/clicker-game/" target="_blank" rel="noopener noreferrer" class="card-cta green">
+                                CHƠI NGAY →
+                            </a>
+                        </div>
+
+                        <div class="project-card coming">
+                            <div class="card-glow purple" style="opacity:0.04;"></div>
+                            <div class="card-top">
+                                <span class="card-icon purple">🧪</span>
+                                <span class="card-badge purple">EXPERIMENTAL</span>
+                            </div>
+                            <h3>New Game Project</h3>
+                            <div class="card-status" style="color:var(--text-muted);">
+                                <span class="dot" style="background:var(--text-muted);animation:none;"></span> IN DEVELOPMENT
+                            </div>
+                            <p class="card-desc">
+                                Một dự án game mới đang được phát triển trong hệ sinh thái Nexyroth.
+                                Thông tin chi tiết sẽ được cập nhật.
+                            </p>
+                            <div class="card-tech">
+                                <span>JavaScript</span>
+                                <span>Experimental</span>
+                            </div>
+                            <span style="font-size:0.7rem;color:var(--text-muted);">COMING SOON</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Security Lab -->
+                <div class="tab-content" id="tab3" role="tabpanel">
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="card-glow purple"></div>
+                            <div class="card-top">
+                                <span class="card-icon purple">🛡️</span>
+                                <span class="card-badge purple">SECURITY LAB</span>
+                            </div>
+                            <h3>Nexyroth Hacker Toolkit</h3>
+                            <div class="card-status">
+                                <span class="dot" style="background:var(--purple);"></span> STATUS: ACTIVE
+                            </div>
+                            <p class="card-desc">
+                                Phòng thí nghiệm cybersecurity chạy trực tiếp trên trình duyệt, tập trung vào học tập
+                                và mô phỏng các công cụ như Port Scanner, Ping, Subdomain Scanner, Password Generator,
+                                Hash và Crypto Lab.
+                            </p>
+                            <div class="card-tech">
+                                <span>Browser Lab</span>
+                                <span>Educational</span>
+                                <span>Local Processing</span>
+                            </div>
+                            <a href="https://nexyroth.github.io/fake_v1/" target="_blank" rel="noopener noreferrer" class="card-cta purple">
+                                MỞ SECURITY LAB →
+                            </a>
+                        </div>
+
+                        <div class="project-card" style="border-color:rgba(157,78,221,0.06);">
+                            <div class="card-glow purple" style="opacity:0.05;"></div>
+                            <div class="card-top">
+                                <span class="card-icon purple">📚</span>
+                                <span class="card-badge purple">LEARNING</span>
+                            </div>
+                            <h3>Cybersecurity Modules</h3>
+                            <div class="card-status" style="color:var(--text-muted);">
+                                <span class="dot" style="background:var(--purple);"></span> EXPANDING
+                            </div>
+                            <p class="card-desc">
+                                Mở rộng các module học cybersecurity: thực hành công cụ, mô phỏng tấn công hợp pháp,
+                                và xây dựng kiến thức an ninh mạng.
+                            </p>
+                            <div class="card-tech">
+                                <span>Educational</span>
+                                <span>Simulation</span>
+                            </div>
+                            <span style="font-size:0.7rem;color:var(--text-muted);">IN DEVELOPMENT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    TECH STACK
+    ============================================================ -->
+    <section id="stack">
+        <div class="container">
+            <div class="section-label">// TECH STACK</div>
+            <h2 class="section-title">Công nghệ <span class="highlight">sử dụng</span></h2>
+            <p class="section-desc">
+                Những công nghệ và công cụ mà Nexyroth sử dụng để xây dựng hệ sinh thái.
+            </p>
+
+            <div class="tech-grid">
+                <span class="tech-item">HTML5</span>
+                <span class="tech-item">CSS3</span>
+                <span class="tech-item">JavaScript</span>
+                <span class="tech-item">ES6+</span>
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Express</span>
+                <span class="tech-item">Socket.IO</span>
+                <span class="tech-item">SQLite</span>
+                <span class="tech-item">Git</span>
+                <span class="tech-item">GitHub Pages</span>
+                <span class="tech-item">Web APIs</span>
+                <span class="tech-item">LocalStorage</span>
+                <span class="tech-item">GSAP</span>
+                <span class="tech-item">ScrollTrigger</span>
+                <span class="tech-item">Lucide Icons</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CURRENTLY BUILDING
+    ============================================================ -->
+    <section id="building">
+        <div class="container">
+            <div class="section-label">// BUILDING</div>
+            <h2 class="section-title">Đang <span class="highlight-green">xây dựng</span></h2>
+            <p class="section-desc">
+                Những dự án và tính năng đang được phát triển tích cực trong hệ sinh thái.
+            </p>
+
+            <div class="building-grid">
+                <div class="building-card">
+                    <h4>Nexyroth OS</h4>
+                    <p>Mở rộng hệ thống mô-đun, tích hợp thêm ứng dụng và công cụ.</p>
+                    <span class="build-status cyan">ACTIVE</span>
+                </div>
+                <div class="building-card">
+                    <h4>Clicker RPG</h4>
+                    <p>Phát triển gameplay, hệ thống progression, và nội dung mới.</p>
+                    <span class="build-status">ACTIVE</span>
+                </div>
+                <div class="building-card">
+                    <h4>Hacker Toolkit</h4>
+                    <p>Mở rộng các module học cybersecurity và công cụ mô phỏng.</p>
+                    <span class="build-status purple">EXPANDING</span>
+                </div>
+                <div class="building-card">
+                    <h4>New Experiments</h4>
+                    <p>Thử nghiệm các ý tưởng mới về AI, game và tương tác số.</p>
+                    <span class="build-status" style="color:var(--text-muted);border-color:rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);">EXPERIMENTAL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    BUILD PHILOSOPHY
+    ============================================================ -->
+    <section style="padding-top:0;">
+        <div class="container">
+            <div class="section-label">// PHILOSOPHY</div>
+            <h2 class="section-title">Quy trình <span class="highlight">xây dựng</span></h2>
+
+            <div class="philosophy-flow" role="list" aria-label="Quy trình phát triển">
+                <span class="step active" role="listitem"><span class="num">01</span> Ý TƯỞNG</span>
+                <span class="arrow">→</span>
+                <span class="step" role="listitem"><span class="num">02</span> THỬ NGHIỆM</span>
+                <span class="arrow">→</span>
+                <span class="step" role="listitem"><span class="num">03</span> XÂY DỰNG</span>
+                <span class="arrow">→</span>
+                <span class="step" role="listitem"><span class="num">04</span> CHẠY THẬT</span>
+                <span class="arrow">→</span>
+                <span class="step" role="listitem"><span class="num">05</span> KIỂM TRA</span>
+                <span class="arrow">→</span>
+                <span class="step" role="listitem"><span class="num">06</span> CẢI THIỆN</span>
+                <span class="arrow">→</span>
+                <span class="step" role="listitem"><span class="num">07</span> MỞ RỘNG</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    VISION
+    ============================================================ -->
+    <section id="vision">
+        <div class="container">
+            <div class="section-label">// VISION</div>
+            <h2 class="section-title">Tầm nhìn <span class="highlight-purple">tương lai</span></h2>
+
+            <div class="vision-block">
+                <p>
+                    Nexyroth hướng tới việc xây dựng một <strong>hệ sinh thái Web cá nhân</strong> có tính mô-đun,
+                    nơi các ứng dụng, game, công cụ và những thử nghiệm mới có thể tiếp tục được thêm vào theo thời gian.
+                </p>
+                <p>
+                    Đây không phải là một startup hay một công ty. Đây là một hành trình cá nhân — xây dựng
+                    một thế giới kỹ thuật số từ những dòng code, vì niềm yêu thích công nghệ và mong muốn
+                    biến ý tưởng thành sản phẩm thực sự.
+                </p>
+                <p style="color:var(--text-muted);font-size:0.9rem;">
+                    <span style="color:var(--cyan);">⟡</span> BUILD. EXPERIMENT. EVOLVE.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- ===== INTERESTS ===== -->
-    <section class="section-pad" id="interests" style="background: rgba(0,0,0,0.1);">
+    <!-- ============================================================
+    GITHUB CTA
+    ============================================================ -->
+    <section id="github" style="padding-top:20px;">
         <div class="container">
-            <div class="section-title reveal">
-                Những thứ mình <span class="highlight">thích</span>
-            </div>
-            <div class="section-desc reveal">
-                Một vài lĩnh vực và hoạt động mình đam mê và thường xuyên khám phá.
-            </div>
-            <div class="grid-3">
-                <div class="glass-card interest-card tilt-element reveal reveal-d1">
-                    <span class="icon">💻</span>
-                    <h3>Programming</h3>
-                    <p>Biến ý tưởng thành những thứ có thể chạy được.</p>
-                </div>
-                <div class="glass-card interest-card tilt-element reveal reveal-d2">
-                    <span class="icon">🌐</span>
-                    <h3>Web Development</h3>
-                    <p>Xây dựng trải nghiệm trực tiếp trên trình duyệt.</p>
-                </div>
-                <div class="glass-card interest-card tilt-element reveal reveal-d3">
-                    <span class="icon">🤖</span>
-                    <h3>AI &amp; Technology</h3>
-                    <p>Khám phá công nghệ mới và những gì chúng có thể làm.</p>
-                </div>
-                <div class="glass-card interest-card tilt-element reveal reveal-d1">
-                    <span class="icon">🎨</span>
-                    <h3>UI/UX</h3>
-                    <p>Thiết kế giao diện đẹp, trải nghiệm mượt mà.</p>
-                </div>
-                <div class="glass-card interest-card tilt-element reveal reveal-d2">
-                    <span class="icon">🎮</span>
-                    <h3>Games</h3>
-                    <p>Vừa chơi vừa học cách xây dựng game với JavaScript.</p>
-                </div>
-                <div class="glass-card interest-card tilt-element reveal reveal-d3">
-                    <span class="icon">🎵</span>
-                    <h3>Music</h3>
-                    <p>Cảm hứng và một phần của hệ sinh thái Nexyroth.</p>
-                </div>
+            <div class="github-cta">
+                <div class="github-icon">⌨️</div>
+                <h3>KHÁM PHÁ CODE</h3>
+                <p>Xem toàn bộ dự án và mã nguồn trên GitHub của Nexyroth.</p>
+                <a href="https://github.com/Nexyroth" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background:var(--text-primary);color:var(--bg-primary);border-color:var(--text-primary);box-shadow:0 0 30px rgba(255,255,255,0.06);">
+                    GitHub →
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== PROJECTS ===== -->
-    <section class="section-pad" id="projects">
-        <div class="container">
-            <div class="section-title reveal">
-                Mình đang xây <span class="highlight-green">gì</span>?
-            </div>
-            <div class="section-desc reveal">
-                Nexyroth không chỉ là một website — đó là một hệ sinh thái đang phát triển.
-                Dưới đây là những project mình đang xây dựng và thử nghiệm.
-            </div>
-            <div class="grid-2" style="margin-top: 1rem;">
-                <div class="glass-card tilt-element reveal reveal-d1">
-                    <div class="glow-line" style="background:linear-gradient(90deg,transparent,var(--cyan-neon),transparent);"></div>
-                    <span class="status-badge dev">ACTIVE · WEB OS</span>
-                    <h3 style="font-weight: 600; font-size: 1.4rem;">Nexyroth OS</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Hệ điều hành giao diện web — nền tảng mở để quản lý ứng dụng,
-                        công cụ và thông tin cá nhân. Xây dựng với <span class="inline-code">HTML</span>,
-                        <span class="inline-code">CSS</span>, <span class="inline-code">JavaScript</span>,
-                        <span class="inline-code">Node.js</span>, <span class="inline-code">Express</span>,
-                        <span class="inline-code">Socket.IO</span>, <span class="inline-code">SQLite</span>.
-                    </p>
-                    <a href="https://nexyroth.github.io/NexyrothOS" target="_blank" class="btn-outline" style="font-size:0.85rem; padding:0.4rem 1.6rem;">
-                        <i class="fas fa-arrow-right"></i> Khám phá OS
-                    </a>
-                </div>
-                <div class="glass-card tilt-element reveal reveal-d2">
-                    <div class="glow-line" style="background:linear-gradient(90deg,transparent,var(--green-neon),transparent);"></div>
-                    <span class="status-badge active">FEATURED GAME</span>
-                    <h3 style="font-weight: 600; font-size: 1.4rem;">Nexyroth Clicker RPG</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Game clicker JavaScript với hệ thống Boss, Skill Tree,
-                        Prestige, Nirvana và bảng sưu tầm. Đang phát triển cơ chế mới.
-                    </p>
-                    <a href="https://nexyroth.github.io/clicker-game/" target="_blank" class="btn-outline green" style="font-size:0.85rem; padding:0.4rem 1.6rem;">
-                        <i class="fas fa-arrow-right"></i> Chơi ngay
-                    </a>
-                </div>
-                <div class="glass-card tilt-element reveal reveal-d3">
-                    <div class="glow-line" style="background:linear-gradient(90deg,transparent,var(--purple-neon),transparent);"></div>
-                    <span class="status-badge experimental">SECURITY LAB</span>
-                    <h3 style="font-weight: 600; font-size: 1.4rem;">Hacker Toolkit</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Phòng thí nghiệm cybersecurity trình duyệt — Port Scanner, Ping,
-                        Subdomain Scanner, Password Generator, Hash, Crypto Lab.
-                        Chạy local, không gửi dữ liệu.
-                    </p>
-                    <a href="https://nexyroth.github.io/fake_v1/" target="_blank" class="btn-outline purple" style="font-size:0.85rem; padding:0.4rem 1.6rem;">
-                        <i class="fas fa-arrow-right"></i> Mở Toolkit
-                    </a>
-                </div>
-                <div class="glass-card tilt-element reveal reveal-d4" style="opacity:0.6; pointer-events:none; filter:grayscale(0.3); border-style:dashed; border-color:var(--border-glass);">
-                    <div class="glow-line"></div>
-                    <span class="status-badge planned">PLANNED</span>
-                    <h3 style="font-weight: 600; font-size: 1.4rem;">Dự án tiếp theo</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Một dự án mới đang trong giai đoạn ý tưởng. Có thể là AI, game mới,
-                        hoặc công cụ hữu ích. Theo dõi để cập nhật!
-                    </p>
-                    <span style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fas fa-hourglass-half"></i> Sắp ra mắt</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TECH ===== -->
-    <section class="section-pad" id="tech" style="background: rgba(0,0,0,0.1);">
-        <div class="container">
-            <div class="section-title reveal">
-                Công nghệ mình <span class="highlight">dùng</span>
-            </div>
-            <div class="section-desc reveal">
-                Những công cụ và ngôn ngữ mình thường xuyên sử dụng trong các project.
-            </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Express</span>
-                <span class="tech-tag">Socket.IO</span>
-                <span class="tech-tag">SQLite</span>
-                <span class="tech-tag">Git</span>
-                <span class="tech-tag">GitHub</span>
-                <span class="tech-tag">Web APIs</span>
-                <span class="tech-tag">GSAP</span>
-                <span class="tech-tag">Three.js</span>
-            </div>
-            <div style="margin-top: 2rem; padding: 1.2rem 1.8rem; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
-                    <span style="color: var(--cyan-neon);">⏺</span> Mỗi công nghệ là một công cụ — mình đang học cách sử dụng chúng tốt hơn qua từng project.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== VISION ===== -->
-    <section class="section-pad" id="vision">
-        <div class="container">
-            <div class="section-title reveal">
-                Nexyroth sẽ <span class="highlight-green">đi đâu</span>?
-            </div>
-            <div class="section-desc reveal">
-                Thay vì tạo những website rời rạc, mục tiêu dài hạn là xây dựng một platform
-                nơi Music, Games, Tools, AI và Developer Tools có thể trở thành những phần
-                khác nhau của cùng một hệ sinh thái.
-            </div>
-            <div class="glass-card tilt-element reveal" style="margin-top: 1rem;">
-                <div class="glow-line" style="background:linear-gradient(90deg,transparent,var(--purple-neon),transparent);"></div>
-                <h3 style="font-weight: 500; font-size: 1.2rem; margin-bottom: 0.4rem;">
-                    <span style="color: var(--purple-neon);">⟡</span> Một hệ sinh thái mở
-                </h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
-                    Nexyroth không phải là một sản phẩm hoàn chỉnh — nó đang được xây dựng
-                    từng bước. Mỗi project là một cơ hội để học thêm một thứ mới.
-                    Mình không biết chính xác nó sẽ trở thành gì, nhưng mình biết mình
-                    sẽ tiếp tục xây dựng, thử nghiệm và mở rộng.
-                </p>
-                <div style="margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 1.5rem; border-top: 1px solid var(--border-glass); padding-top: 1.2rem;">
-                    <div><span style="color: var(--cyan-neon);">◆</span> Học</div>
-                    <div><span style="color: var(--green-neon);">◆</span> Thử nghiệm</div>
-                    <div><span style="color: var(--purple-neon);">◆</span> Xây dựng</div>
-                    <div><span style="color: var(--text-secondary);">◆</span> Mở rộng</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
     <footer class="footer">
         <div class="container">
-            <div class="brand">
-                <span class="hl">⌘ NEXYROTH</span> · Designed &amp; Developed by Nexyroth
+            <div class="footer-brand">
+                NEXYROTH <span>/ HUB</span>
             </div>
-            <div class="social">
-                <a href="https://github.com/Nexyroth" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="#" aria-label="Twitter" style="opacity:0.3; pointer-events:none;">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" aria-label="Discord" style="opacity:0.3; pointer-events:none;">
-                    <i class="fab fa-discord"></i>
-                </a>
+            <div class="footer-sub">
+                Designed &amp; Developed by Nexyroth © 2026
             </div>
-            <div class="copy">
-                &copy; 2026 Nexyroth · Built with <i class="fas fa-heart" style="color:var(--cyan-neon); font-size:0.6rem;"></i>
+            <div class="footer-tagline">
+                BUILD • EXPERIMENT • EVOLVE
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/Nexyroth" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    GitHub
+                </a>
             </div>
         </div>
     </footer>
 
+    <!-- ============================================================
+    JAVASCRIPT — HOÀN CHỈNH
+    ============================================================ -->
     <script>
         (function() {
             'use strict';
 
-            // ===== PARTICLES =====
-            var canvas = document.getElementById('particles-canvas');
-            if (canvas) {
-                var ctx = canvas.getContext('2d');
-                var w, h;
-                var particles = [];
-                var COUNT = 70;
+            // ----------------------------------------------------------------
+            // 1. REDUCED MOTION DETECTION
+            // ----------------------------------------------------------------
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-                function resizeParticles() {
-                    w = canvas.width = window.innerWidth;
-                    h = canvas.height = window.innerHeight;
-                }
-                window.addEventListener('resize', resizeParticles);
-                resizeParticles();
+            // ----------------------------------------------------------------
+            // 2. CURSOR GLOW (desktop only)
+            // ----------------------------------------------------------------
+            const cursorGlow = document.getElementById('cursorGlow');
+            let cursorGlowActive = false;
 
-                function Particle() {
-                    this.reset = function() {
-                        this.x = Math.random() * w;
-                        this.y = Math.random() * h;
-                        this.size = Math.random() * 1.8 + 0.4;
-                        this.speedX = (Math.random() - 0.5) * 0.2;
-                        this.speedY = (Math.random() - 0.5) * 0.2;
-                        this.opacity = Math.random() * 0.4 + 0.1;
-                    };
-                    this.update = function() {
-                        this.x += this.speedX;
-                        this.y += this.speedY;
-                        if (this.x < 0 || this.x > w) this.speedX *= -1;
-                        if (this.y < 0 || this.y > h) this.speedY *= -1;
-                    };
-                    this.draw = function() {
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fillStyle = 'rgba(0, 242, 254, ' + this.opacity + ')';
-                        ctx.shadowColor = 'rgba(0, 242, 254, 0.02)';
-                        ctx.shadowBlur = 6;
-                        ctx.fill();
-                        ctx.shadowBlur = 0;
-                    };
-                    this.reset();
-                }
-                for (var i = 0; i < COUNT; i++) particles.push(new Particle());
-
-                function animateParticles() {
-                    ctx.clearRect(0, 0, w, h);
-                    for (var i = 0; i < particles.length; i++) {
-                        var p = particles[i];
-                        p.update();
-                        p.draw();
+            if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
+                cursorGlowActive = true;
+                document.addEventListener('mousemove', function(e) {
+                    if (cursorGlow) {
+                        cursorGlow.style.left = e.clientX + 'px';
+                        cursorGlow.style.top = e.clientY + 'px';
                     }
-                    for (var a = 0; a < particles.length; a++) {
-                        for (var b = a + 1; b < particles.length; b++) {
-                            var dx = particles[a].x - particles[b].x;
-                            var dy = particles[a].y - particles[b].y;
-                            var dist = Math.sqrt(dx * dx + dy * dy);
-                            if (dist < 120) {
-                                ctx.beginPath();
-                                ctx.moveTo(particles[a].x, particles[a].y);
-                                ctx.lineTo(particles[b].x, particles[b].y);
-                                var alpha = (1 - dist / 120) * 0.04;
-                                ctx.strokeStyle = 'rgba(0, 242, 254, ' + alpha + ')';
-                                ctx.lineWidth = 0.5;
-                                ctx.stroke();
+                });
+                // Hide on mobile/touch
+                document.addEventListener('touchstart', function() {
+                    if (cursorGlow) cursorGlow.style.opacity = '0';
+                }, { passive: true });
+            }
+
+            // ----------------------------------------------------------------
+            // 3. PARTICLES (tsParticles)
+            // ----------------------------------------------------------------
+            (function initParticles() {
+                if (typeof tsParticles !== 'undefined' && !prefersReducedMotion) {
+                    tsParticles.load('particles-container', {
+                        fpsLimit: 60,
+                        particles: {
+                            number: { value: 60, density: { enable: true, area: 1000 } },
+                            color: { value: ['#00f2fe', '#00ff87', '#9d4edd'] },
+                            shape: { type: 'circle' },
+                            opacity: {
+                                value: 0.25,
+                                random: true,
+                                animation: { enable: true, speed: 0.6, minimumValue: 0.05 }
+                            },
+                            size: {
+                                value: 2,
+                                random: true,
+                                animation: { enable: true, speed: 1, minimumValue: 0.5 }
+                            },
+                            move: {
+                                enable: true,
+                                speed: 0.4,
+                                direction: 'none',
+                                random: true,
+                                straight: false,
+                                outModes: 'out',
+                                attract: { enable: false }
+                            },
+                            links: {
+                                enable: true,
+                                distance: 150,
+                                color: '#00f2fe',
+                                opacity: 0.08,
+                                width: 1
                             }
-                        }
-                    }
-                    requestAnimationFrame(animateParticles);
+                        },
+                        interactivity: {
+                            events: {
+                                onHover: { enable: true, mode: 'repulse' },
+                                resize: true
+                            },
+                            modes: {
+                                repulse: { distance: 120, duration: 0.4 }
+                            }
+                        },
+                        background: { color: 'transparent' },
+                        detectRetina: true
+                    }).catch(function() { /* silently fail */ });
+                } else {
+                    // Fallback: no particles
+                    document.getElementById('particles-container').style.display = 'none';
                 }
-                animateParticles();
+            })();
+
+            // ----------------------------------------------------------------
+            // 4. NAVBAR — scroll effect + active state
+            // ----------------------------------------------------------------
+            const navbar = document.getElementById('navbar');
+            let lastScrollY = 0;
+
+            function handleNavScroll() {
+                const scrollY = window.scrollY;
+                if (scrollY > 60) {
+                    navbar.classList.add('navbar--scrolled');
+                } else {
+                    navbar.classList.remove('navbar--scrolled');
+                }
+                lastScrollY = scrollY;
+            }
+            window.addEventListener('scroll', handleNavScroll, { passive: true });
+            handleNavScroll();
+
+            // Active nav links (observer)
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('[data-nav]');
+            const navMobileLinks = document.querySelectorAll('[data-nav-mobile]');
+
+            function updateActiveNav() {
+                let current = '';
+                const scrollPos = window.scrollY + 120;
+                sections.forEach(function(section) {
+                    const top = section.offsetTop;
+                    const height = section.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(function(link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+                });
+                navMobileLinks.forEach(function(link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+                });
+            }
+            window.addEventListener('scroll', updateActiveNav, { passive: true });
+            window.addEventListener('resize', updateActiveNav, { passive: true });
+            updateActiveNav();
+
+            // ----------------------------------------------------------------
+            // 5. HAMBURGER / MOBILE MENU
+            // ----------------------------------------------------------------
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+            let mobileOpen = false;
+
+            function toggleMobile(open) {
+                mobileOpen = (open !== undefined) ? open : !mobileOpen;
+                hamburger.classList.toggle('active', mobileOpen);
+                hamburger.setAttribute('aria-expanded', String(mobileOpen));
+                mobileNav.classList.toggle('open', mobileOpen);
             }
 
-            // ===== GSAP HERO =====
-            gsap.from('.hero-title .neon', {
-                duration: 1.2,
-                y: 60,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.2
-            });
-            gsap.from('.hero-tagline', {
-                duration: 1,
-                y: 40,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.4
-            });
-            gsap.from('.hero-meta', {
-                duration: 0.9,
-                y: 30,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.6
-            });
-            gsap.from('.hero-actions', {
-                duration: 0.8,
-                y: 30,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.8
-            });
-            gsap.from('.hero-badge', {
-                duration: 0.8,
-                y: 20,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.1
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMobile();
             });
 
-            // ===== INTERSECTION OBSERVER =====
-            var revealElements = document.querySelectorAll('.reveal');
-            if (revealElements.length > 0) {
-                var observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
+            // Close mobile on link click
+            mobileNav.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (mobileOpen) toggleMobile(false);
+                });
+            });
+
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (mobileOpen && !mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+                    toggleMobile(false);
+                }
+            });
+
+            // Close on escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileOpen) toggleMobile(false);
+            });
+
+            // ----------------------------------------------------------------
+            // 6. TAB SYSTEM
+            // ----------------------------------------------------------------
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = {
+                tab1: document.getElementById('tab1'),
+                tab2: document.getElementById('tab2'),
+                tab3: document.getElementById('tab3')
+            };
+
+            function switchTab(tabId) {
+                // Update buttons
+                tabButtons.forEach(function(btn) {
+                    const isActive = btn.dataset.tab === tabId;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-selected', String(isActive));
+                });
+
+                // Update contents
+                Object.keys(tabContents).forEach(function(key) {
+                    const el = tabContents[key];
+                    if (key === tabId) {
+                        el.classList.add('active');
+                        el.style.display = 'block';
+                    } else {
+                        el.classList.remove('active');
+                        el.style.display = 'none';
+                    }
+                });
+            }
+
+            tabButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+                    if (tabId && tabContents[tabId]) {
+                        switchTab(tabId);
+                    }
+                });
+                // Keyboard support: Enter/Space
+                btn.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+
+            // Set default: tab1 active
+            switchTab('tab1');
+
+            // ----------------------------------------------------------------
+            // 7. SMOOTH SCROLL (anchor links)
+            // ----------------------------------------------------------------
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        // Update URL hash without causing scroll
+                        history.pushState(null, null, href);
+                    }
+                });
+            });
+
+            // ----------------------------------------------------------------
+            // 8. VANILLA TILT (project cards)
+            // ----------------------------------------------------------------
+            if (!prefersReducedMotion && typeof VanillaTilt !== 'undefined') {
+                try {
+                    VanillaTilt.init(document.querySelectorAll('.project-card:not(.coming)'), {
+                        max: 6,
+                        speed: 400,
+                        glare: false,
+                        scale: 1.02,
+                        perspective: 800,
+                        gyroscope: false
+                    });
+                } catch (e) { /* ignore */ }
+            }
+
+            // ----------------------------------------------------------------
+            // 9. GSAP + SCROLLTRIGGER (with fallback)
+            // ----------------------------------------------------------------
+            let gsapReady = false;
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !prefersReducedMotion) {
+                try {
+                    gsap.registerPlugin(ScrollTrigger);
+
+                    // Hero animation
+                    const heroTL = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
+                    heroTL
+                        .from('.hero-title', { opacity: 0, y: 60, duration: 1.2, delay: 0.2 })
+                        .from('.hero-sub', { opacity: 0, y: 30, duration: 0.8 }, '-=0.6')
+                        .from('.hero-identity', { opacity: 0, y: 20, duration: 0.6 }, '-=0.5')
+                        .from('.hero-terminal', { opacity: 0, y: 30, duration: 0.7 }, '-=0.4')
+                        .from('.hero-actions .btn', { opacity: 0, y: 20, stagger: 0.15, duration: 0.6 }, '-=0.3')
+                        .from('.hero-badge', { opacity: 0, scale: 0.9, duration: 0.5 }, '-=1.2');
+
+                    // Sections reveal
+                    const sectionsToReveal = [
+                        '#about',
+                        '#focus',
+                        '#ecosystem',
+                        '#projects',
+                        '#stack',
+                        '#building',
+                        '#vision',
+                        '#github'
+                    ];
+                    sectionsToReveal.forEach(function(sel) {
+                        const el = document.querySelector(sel);
+                        if (el) {
+                            gsap.from(el, {
+                                scrollTrigger: {
+                                    trigger: el,
+                                    start: 'top 85%',
+                                    toggleActions: 'play none none none'
+                                },
+                                opacity: 0,
+                                y: 40,
+                                duration: 0.9,
+                                ease: 'power2.out'
+                            });
                         }
                     });
-                }, {
-                    threshold: 0.15,
-                    rootMargin: '0px 0px -20px 0px'
-                });
-                revealElements.forEach(function(el) {
-                    observer.observe(el);
-                });
-                setTimeout(function() {
-                    revealElements.forEach(function(el) {
-                        var rect = el.getBoundingClientRect();
-                        if (rect.top < window.innerHeight) {
-                            el.classList.add('visible');
-                        }
+
+                    // Philosophy steps stagger
+                    const flowSteps = document.querySelectorAll('.philosophy-flow .step');
+                    if (flowSteps.length) {
+                        gsap.from(flowSteps, {
+                            scrollTrigger: {
+                                trigger: '.philosophy-flow',
+                                start: 'top 85%',
+                                toggleActions: 'play none none none'
+                            },
+                            opacity: 0,
+                            y: 20,
+                            stagger: 0.08,
+                            duration: 0.6,
+                            ease: 'power2.out'
+                        });
+                    }
+
+                    // Project cards stagger
+                    const projectCards = document.querySelectorAll('.project-card');
+                    if (projectCards.length) {
+                        gsap.from(projectCards, {
+                            scrollTrigger: {
+                                trigger: '#projects',
+                                start: 'top 80%',
+                                toggleActions: 'play none none none'
+                            },
+                            opacity: 0,
+                            y: 30,
+                            stagger: 0.1,
+                            duration: 0.7,
+                            ease: 'power2.out'
+                        });
+                    }
+
+                    gsapReady = true;
+                } catch (e) {
+                    // GSAP failed — fallback to CSS animations
+                    gsapReady = false;
+                }
+            }
+
+            // If GSAP not ready, ensure content is visible
+            if (!gsapReady) {
+                document.querySelectorAll('.hero-title, .hero-sub, .hero-identity, .hero-terminal, .hero-actions .btn, .hero-badge')
+                    .forEach(function(el) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'none';
                     });
-                }, 100);
             }
 
-            // ===== VANILLA TILT =====
-            var tiltElements = document.querySelectorAll('.tilt-element');
-            if (tiltElements.length > 0 && typeof VanillaTilt !== 'undefined') {
-                VanillaTilt.init(tiltElements, {
-                    max: 8,
-                    speed: 400,
-                    glare: true,
-                    'max-glare': 0.05,
-                    scale: 1.02,
-                    perspective: 800,
-                    gyroscope: true,
+            // ----------------------------------------------------------------
+            // 10. LUCIDE ICONS
+            // ----------------------------------------------------------------
+            if (typeof lucide !== 'undefined') {
+                try {
+                    lucide.createIcons();
+                } catch (e) { /* ignore */ }
+            }
+
+            // ----------------------------------------------------------------
+            // 11. KEYBOARD FOCUS VISIBILITY
+            // ----------------------------------------------------------------
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-nav');
+                }
+            });
+            document.addEventListener('mousedown', function() {
+                document.body.classList.remove('keyboard-nav');
+            });
+
+            // ----------------------------------------------------------------
+            // 12. HANDLE PREFERS-REDUCED-MOTION
+            // ----------------------------------------------------------------
+            if (prefersReducedMotion) {
+                // Disable tilt, particles already disabled, GSAP animations reduced
+                document.querySelectorAll('.project-card').forEach(function(card) {
+                    card.style.transform = 'none !important';
                 });
+                // Remove cursor glow
+                if (cursorGlow) cursorGlow.style.display = 'none';
             }
 
-            // ===== CONFETTI =====
-            if (typeof confetti !== 'undefined') {
-                setTimeout(function() {
-                    confetti({
-                        particleCount: 25,
-                        spread: 50,
-                        origin: { y: 0.6 },
-                        colors: ['#00f2fe', '#00ff87', '#9d4edd', '#ffffff'],
-                        startVelocity: 18,
-                        gravity: 0.8,
-                        scalar: 0.7
-                    });
-                }, 700);
-            }
-
-            console.log('┌─────────────────────────────────────────────┐');
-            console.log('│  NEXYROTH  ·  Digital Builder              │');
-            console.log('│  Ý tưởng → Thử nghiệm → Xây dựng → Mở rộng │');
-            console.log('│  Built with ❤️  & Vanilla JS              │');
-            console.log('└─────────────────────────────────────────────┘');
-
+            // ----------------------------------------------------------------
+            // 13. ERROR-SAFE: ensure no blank content
+            // ----------------------------------------------------------------
+            console.log('NEXYROTH HUB — System Online');
         })();
     </script>
+
 </body>
 </html>
