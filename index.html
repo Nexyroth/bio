@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexyroth · Personal Hub</title>
+    <title>Nexyroth · Digital Builder</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
     </script>
@@ -12,28 +12,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js">
     </script>
     <style>
+        /* ============================================================
+           UI/UX PRO MAX — DESIGN SYSTEM
+           ============================================================ */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         :root {
-            --bg-primary: #0b0f19;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --border-glass: rgba(255, 255, 255, 0.06);
+            --bg-primary: #080c16;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --border-glass: rgba(255, 255, 255, 0.04);
             --text-primary: #f0f4f8;
             --text-secondary: #94a3b8;
             --cyan-neon: #00f2fe;
             --green-neon: #00ff87;
             --purple-neon: #9d4edd;
-            --glow-cyan: 0 0 30px rgba(0, 242, 254, 0.15);
-            --glow-green: 0 0 30px rgba(0, 255, 135, 0.12);
-            --glow-purple: 0 0 30px rgba(157, 78, 221, 0.12);
+            --glow-cyan: 0 0 30px rgba(0, 242, 254, 0.12);
+            --glow-green: 0 0 30px rgba(0, 255, 135, 0.10);
+            --glow-purple: 0 0 30px rgba(157, 78, 221, 0.10);
             --radius-lg: 32px;
             --radius-md: 20px;
             --radius-sm: 12px;
             --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
         html { scroll-behavior: smooth; }
         body {
@@ -56,18 +60,10 @@
             z-index: 0;
             pointer-events: none;
         }
-        .glass {
-            background: var(--bg-card);
-            backdrop-filter: blur(24px) saturate(1.2);
-            -webkit-backdrop-filter: blur(24px) saturate(1.2);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
         .glass-card {
             background: var(--bg-card);
-            backdrop-filter: blur(20px) saturate(1.1);
-            -webkit-backdrop-filter: blur(20px) saturate(1.1);
+            backdrop-filter: blur(20px) saturate(1.05);
+            -webkit-backdrop-filter: blur(20px) saturate(1.05);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
             padding: 2rem 2rem 2.2rem;
@@ -76,9 +72,9 @@
             overflow: hidden;
         }
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
         }
         .glass-card .glow-line {
             position: absolute;
@@ -119,6 +115,8 @@
             line-height: 1.8;
             margin-bottom: 2.5rem;
         }
+
+        /* ===== HERO — NEW IDENTITY ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -134,7 +132,7 @@
             align-items: center;
             gap: 10px;
             background: rgba(0, 242, 254, 0.04);
-            border: 1px solid rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.06);
             padding: 0.3rem 1.2rem 0.3rem 0.8rem;
             border-radius: 60px;
             font-size: 0.7rem;
@@ -158,7 +156,7 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
         .hero-title {
-            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-size: clamp(3.2rem, 8vw, 5.6rem);
             font-weight: 700;
             letter-spacing: -2px;
             line-height: 1.05;
@@ -166,21 +164,41 @@
         }
         .hero-title .neon {
             color: var(--cyan-neon);
-            text-shadow: 0 0 60px rgba(0, 242, 254, 0.15), 0 0 120px rgba(0, 242, 254, 0.05);
+            text-shadow: 0 0 60px rgba(0, 242, 254, 0.12), 0 0 120px rgba(0, 242, 254, 0.04);
             display: inline-block;
         }
-        .hero-title .neon-green {
-            color: var(--green-neon);
-            text-shadow: 0 0 60px rgba(0, 255, 135, 0.12);
-        }
-        .hero-sub {
-            font-size: clamp(1rem, 1.4vw, 1.25rem);
+        .hero-tagline {
+            font-size: clamp(1.1rem, 1.6vw, 1.4rem);
             color: var(--text-secondary);
             max-width: 560px;
             line-height: 1.8;
             margin-top: 0.4rem;
             letter-spacing: 0.3px;
         }
+        .hero-tagline .highlight {
+            color: var(--green-neon);
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            margin-top: 1.2rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: rgba(0,0,0,0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glass);
+            max-width: fit-content;
+        }
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-meta .label { color: var(--text-muted); }
+        .hero-meta .value { color: var(--cyan-neon); }
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
@@ -205,14 +223,14 @@
         }
         .btn-primary:hover {
             transform: scale(1.03);
-            box-shadow: 0 0 60px rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 60px rgba(0, 242, 254, 0.15);
         }
         .btn-outline {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
             color: var(--text-primary);
             padding: 0.75rem 2.2rem;
             border-radius: 60px;
@@ -226,13 +244,49 @@
         .btn-outline:hover {
             border-color: var(--cyan-neon);
             color: var(--cyan-neon);
-            box-shadow: 0 0 40px rgba(0, 242, 254, 0.02);
         }
         .btn-outline.green:hover { border-color: var(--green-neon); color: var(--green-neon); }
         .btn-outline.purple:hover { border-color: var(--purple-neon); color: var(--purple-neon); }
+
+        /* ===== ABOUT — IDENTITY FOCUS ===== */
+        .identity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .identity-card .icon-big {
+            font-size: 2.4rem;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+        .identity-card h3 {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+        }
+        .identity-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .identity-card .tag {
+            display: inline-block;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.1rem 0.8rem;
+            border-radius: 60px;
+            background: rgba(0, 242, 254, 0.04);
+            border: 1px solid rgba(0, 242, 254, 0.06);
+            color: var(--cyan-neon);
+            margin-top: 0.6rem;
+        }
+
+        /* ===== INTERESTS & TECH ===== */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         .interest-card {
             text-align: center;
             padding: 1.8rem 1.2rem;
@@ -240,6 +294,7 @@
         .interest-card .icon { font-size: 2.6rem; margin-bottom: 0.4rem; display: block; }
         .interest-card h3 { font-weight: 500; font-size: 1.1rem; margin-bottom: 0.2rem; color: var(--text-primary); }
         .interest-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; }
+
         .status-badge {
             display: inline-block;
             font-size: 0.6rem;
@@ -269,6 +324,7 @@
             border: 1px solid var(--border-glass);
             color: var(--text-secondary);
         }
+
         .tech-tag {
             display: inline-block;
             background: rgba(255, 255, 255, 0.02);
@@ -277,10 +333,20 @@
             border-radius: 60px;
             font-size: 0.75rem;
             color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             transition: var(--transition);
         }
         .tech-tag:hover { border-color: var(--cyan-neon); color: var(--text-primary); }
+
+        .inline-code {
+            font-family: var(--font-mono);
+            color: var(--cyan-neon);
+            background: rgba(0, 242, 254, 0.04);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
         .footer {
             padding: 2.5rem 0 2rem;
             border-top: 1px solid var(--border-glass);
@@ -319,10 +385,12 @@
             margin-top: 0.8rem;
             letter-spacing: 0.3px;
         }
+
         @media (max-width: 768px) {
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .grid-2, .grid-3, .identity-grid { grid-template-columns: 1fr; }
             .hero-title { font-size: 2.6rem; }
             .glass-card { padding: 1.5rem; }
+            .hero-meta { flex-direction: column; gap: 0.4rem; align-items: flex-start; }
             .footer .container { flex-direction: column; align-items: center; text-align: center; }
         }
         @media (max-width: 480px) {
@@ -330,57 +398,49 @@
             .hero-actions { flex-direction: column; align-items: stretch; }
             .btn-primary, .btn-outline { justify-content: center; }
         }
-        .tilt-element { transform-style: preserve-3d; }
-        .tilt-element .tilt-inner { transform: translateZ(20px); }
 
-        /* Reveal animation – dùng Intersection Observer thay vì ScrollTrigger */
+        .tilt-element { transform-style: preserve-3d; }
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-d1 { transition-delay: 0.05s; }
         .reveal-d2 { transition-delay: 0.1s; }
         .reveal-d3 { transition-delay: 0.15s; }
         .reveal-d4 { transition-delay: 0.2s; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { opacity: 1; transform: none; }
-        }
-        .inline-code {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--cyan-neon);
-            background: rgba(0, 242, 254, 0.04);
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-        }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
     </style>
 </head>
 <body>
     <canvas id="particles-canvas"></canvas>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== HERO — NEW IDENTITY ===== -->
     <section class="hero">
         <div class="container">
             <div class="hero-badge">
-                <span class="dot"></span> Hiện tại · đang xây dựng Nexyroth
+                <span class="dot"></span> Đang xây dựng
             </div>
             <h1 class="hero-title">
-                <span class="neon">NEXYROTH</span><br />
-                <span class="neon-green">HUB</span>
+                <span class="neon">NEXYROTH</span>
             </h1>
-            <p class="hero-sub">
-                Mình là một học sinh yêu thích lập trình và công nghệ.<br />
-                Mình dùng Nexyroth như một không gian để học hỏi,<br />
-                thử nghiệm ý tưởng và xây dựng những project của riêng mình.
+            <p class="hero-tagline">
+                Dựng nên thế giới kỹ thuật số của riêng mình.
             </p>
+            <div class="hero-meta">
+                <span><span class="label">danh_tính</span> <span class="value">NEXYROTH</span></span>
+                <span><span class="label">trạng_thái</span> <span class="value">ĐANG_XÂY_DỰNG</span></span>
+                <span><span class="label">môi_trường</span> <span class="value">WEB</span></span>
+                <span><span class="label">chế_độ</span> <span class="value">THỬ_NGHIỆM</span></span>
+                <span><span class="label">hệ_sinh_thái</span> <span class="value">ONLINE</span></span>
+            </div>
+            <div style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-secondary); letter-spacing: 1px;">
+                DIGITAL BUILDER · WEB · SYSTEMS · GAMES · EXPERIMENTS
+            </div>
             <div class="hero-actions">
                 <a href="#about" class="btn-primary">
-                    <i class="fas fa-arrow-right"></i> Về mình
+                    <i class="fas fa-arrow-right"></i> Khám phá
                 </a>
                 <a href="#projects" class="btn-outline">
                     <i class="fas fa-code"></i> Dự án
@@ -392,48 +452,50 @@
         </div>
     </section>
 
-    <!-- ===== ABOUT ===== -->
+    <!-- ===== ABOUT — IDENTITY FOCUS ===== -->
     <section class="section-pad" id="about">
         <div class="container">
             <div class="section-title reveal">
-                Đằng sau <span class="highlight">Nexyroth</span>
+                <span class="highlight">Nexyroth</span> là ai?
             </div>
             <div class="section-desc reveal">
-                Mình là một học sinh THPT (lớp 11) 
-                <strong>.</strong>. Mình thích lập trình, đặc biệt là phát triển web.
-                Lập trình không nhất thiết là ngành mình sẽ theo đại học, nhưng là lĩnh vực
-                mình rất thích tự học, tự thử nghiệm và xây dựng project.
+                Một người thích biến những ý tưởng trong đầu thành những thứ có thể thực sự chạy được.
+                Không chỉ học lập trình, không chỉ làm website — mà là xây dựng một hệ sinh thái kỹ thuật số từ những khối ý tưởng nhỏ nhất.
             </div>
-            <div class="grid-2" style="margin-top: 1.5rem;">
-                <div class="glass-card tilt-element reveal reveal-d1">
+            <div class="identity-grid">
+                <div class="glass-card identity-card tilt-element reveal reveal-d1">
                     <div class="glow-line"></div>
-                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--cyan-neon); margin-bottom: 0.4rem;">Identity</div>
-                    <h3 style="font-weight: 500; font-size: 1.2rem;">Nexyroth</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-                        Identity mình sử dụng cho các dự án cá nhân và hệ sinh thái công nghệ.
-                        Không chỉ là tên, đây là không gian để mình học, thử nghiệm và phát triển.
-                    </p>
+                    <span class="icon-big">🧠</span>
+                    <h3>Ý tưởng → Thử nghiệm</h3>
+                    <p>Mọi thứ bắt đầu từ một ý nghĩ, một câu hỏi, một sự tò mò. Nexyroth thích bắt tay vào thử nghiệm ngay khi có ý tưởng, dù nó kỳ quặc hay chưa rõ ràng.</p>
+                    <span class="tag">EXPERIMENT</span>
                 </div>
-                <div class="glass-card tilt-element reveal reveal-d2">
+                <div class="glass-card identity-card tilt-element reveal reveal-d2">
                     <div class="glow-line"></div>
-                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--green-neon); margin-bottom: 0.4rem;">Learning</div>
-                    <h3 style="font-weight: 500; font-size: 1.2rem;">THPT · Lớp 11</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-                        Định hướng <strong>Toán - Văn - Địa</strong>. Bên cạnh việc học,
-                        mình dành thời gian để tìm hiểu lập trình, thiết kế và xây dựng
-                        những ứng dụng web.
-                    </p>
+                    <span class="icon-big">⚙️</span>
+                    <h3>Xây dựng → Chạy thật</h3>
+                    <p>Không chỉ dừng ở bản vẽ. Nexyroth xây dựng những thứ có thể chạy được, có thể tương tác, có thể nhìn thấy và cảm nhận — trên trình duyệt, trên web, trong đời thực.</p>
+                    <span class="tag">BUILD</span>
+                </div>
+                <div class="glass-card identity-card tilt-element reveal reveal-d3">
+                    <div class="glow-line"></div>
+                    <span class="icon-big">🔄</span>
+                    <h3>Kiểm tra → Cải thiện</h3>
+                    <p>Mỗi sản phẩm là một bài học. Nexyroth kiểm tra, tìm lỗi, sửa chữa, tối ưu và làm lại. Không có gì là hoàn hảo ngay lần đầu — nhưng mọi thứ đều có thể tốt hơn.</p>
+                    <span class="tag">ITERATE</span>
+                </div>
+                <div class="glass-card identity-card tilt-element reveal reveal-d4">
+                    <div class="glow-line"></div>
+                    <span class="icon-big">🚀</span>
+                    <h3>Mở rộng → Hệ sinh thái</h3>
+                    <p>Mỗi dự án không đứng độc lập. Nexyroth là một hệ sinh thái đang phát triển — nơi các ứng dụng, công cụ, game và thử nghiệm kết nối với nhau trên cùng một nền tảng.</p>
+                    <span class="tag">ECOSYSTEM</span>
                 </div>
             </div>
-            <div class="glass-card tilt-element reveal" style="margin-top: 1.5rem;">
+            <div class="glass-card tilt-element reveal" style="margin-top: 2rem;">
                 <div class="glow-line"></div>
-                <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--purple-neon); margin-bottom: 0.4rem;">Building</div>
-                <h3 style="font-weight: 500; font-size: 1.2rem;">Web applications · Tools · Games</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
-                    Mình thích biến những ý tưởng tự nghĩ ra thành những project có thể chạy thực tế.
-                    Không chỉ viết code cho có, mình tự xây dựng giao diện, logic, hệ thống,
-                    tính năng, animation và trải nghiệm người dùng.
-                    Phong cách của mình là <strong>EXPERIMENT → BUILD → TEST → IMPROVE → EXPAND</strong>.
+                <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.9; text-align: center; max-width: 700px; margin: 0 auto;">
+                    Nexyroth không phải là một công ty, không phải một chức danh. Là một người trẻ đam mê công nghệ, thích tự mày mò, tự xây dựng và không ngừng thử nghiệm những điều mới.
                 </p>
             </div>
         </div>
@@ -452,22 +514,22 @@
                 <div class="glass-card interest-card tilt-element reveal reveal-d1">
                     <span class="icon">💻</span>
                     <h3>Programming</h3>
-                    <p>Thích biến ý tưởng thành những thứ có thể chạy được.</p>
+                    <p>Biến ý tưởng thành những thứ có thể chạy được.</p>
                 </div>
                 <div class="glass-card interest-card tilt-element reveal reveal-d2">
                     <span class="icon">🌐</span>
                     <h3>Web Development</h3>
-                    <p>Đặc biệt thích xây những trải nghiệm chạy trực tiếp trên trình duyệt.</p>
+                    <p>Xây dựng trải nghiệm trực tiếp trên trình duyệt.</p>
                 </div>
                 <div class="glass-card interest-card tilt-element reveal reveal-d3">
                     <span class="icon">🤖</span>
                     <h3>AI &amp; Technology</h3>
-                    <p>Thích khám phá những công nghệ mới và xem chúng có thể làm được gì.</p>
+                    <p>Khám phá công nghệ mới và những gì chúng có thể làm.</p>
                 </div>
                 <div class="glass-card interest-card tilt-element reveal reveal-d1">
                     <span class="icon">🎨</span>
                     <h3>UI/UX</h3>
-                    <p>Thiết kế giao diện đẹp, trải nghiệm mượt mà và có cá tính.</p>
+                    <p>Thiết kế giao diện đẹp, trải nghiệm mượt mà.</p>
                 </div>
                 <div class="glass-card interest-card tilt-element reveal reveal-d2">
                     <span class="icon">🎮</span>
@@ -477,7 +539,7 @@
                 <div class="glass-card interest-card tilt-element reveal reveal-d3">
                     <span class="icon">🎵</span>
                     <h3>Music</h3>
-                    <p>Âm nhạc là cảm hứng, và cũng là một phần trong hệ sinh thái Nexyroth.</p>
+                    <p>Cảm hứng và một phần của hệ sinh thái Nexyroth.</p>
                 </div>
             </div>
         </div>
@@ -499,11 +561,11 @@
                     <span class="status-badge dev">ACTIVE · WEB OS</span>
                     <h3 style="font-weight: 600; font-size: 1.4rem;">Nexyroth OS</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Hệ điều hành giao diện web — một nền tảng mở để quản lý các ứng dụng,
+                        Hệ điều hành giao diện web — nền tảng mở để quản lý ứng dụng,
                         công cụ và thông tin cá nhân. Xây dựng với <span class="inline-code">HTML</span>,
                         <span class="inline-code">CSS</span>, <span class="inline-code">JavaScript</span>,
                         <span class="inline-code">Node.js</span>, <span class="inline-code">Express</span>,
-                        <span class="inline-code">Socket.IO</span> và <span class="inline-code">SQLite</span>.
+                        <span class="inline-code">Socket.IO</span>, <span class="inline-code">SQLite</span>.
                     </p>
                     <a href="https://nexyroth.github.io/Nexyroth" target="_blank" class="btn-outline" style="font-size:0.85rem; padding:0.4rem 1.6rem;">
                         <i class="fas fa-arrow-right"></i> Khám phá OS
@@ -514,9 +576,8 @@
                     <span class="status-badge active">FEATURED GAME</span>
                     <h3 style="font-weight: 600; font-size: 1.4rem;">Nexyroth Clicker RPG</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Game clicker thuần JavaScript với hệ thống Boss, Skill Tree,
-                        Prestige (trùng sinh), Nirvana và bảng sưu tầm. Đang phát triển
-                        các cơ chế mới và cân bằng gameplay.
+                        Game clicker JavaScript với hệ thống Boss, Skill Tree,
+                        Prestige, Nirvana và bảng sưu tầm. Đang phát triển cơ chế mới.
                     </p>
                     <a href="https://nexyroth.github.io/clicker-game/" target="_blank" class="btn-outline green" style="font-size:0.85rem; padding:0.4rem 1.6rem;">
                         <i class="fas fa-arrow-right"></i> Chơi ngay
@@ -527,9 +588,9 @@
                     <span class="status-badge experimental">SECURITY LAB</span>
                     <h3 style="font-weight: 600; font-size: 1.4rem;">Hacker Toolkit</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Phòng thí nghiệm cybersecurity chạy hoàn toàn trên trình duyệt.
-                        Gồm Port Scanner (sim), Ping, Subdomain Scanner, Password Generator,
-                        Hash Generator và Crypto Lab. Tất cả đều chạy local, không gửi dữ liệu.
+                        Phòng thí nghiệm cybersecurity trình duyệt — Port Scanner, Ping,
+                        Subdomain Scanner, Password Generator, Hash, Crypto Lab.
+                        Chạy local, không gửi dữ liệu.
                     </p>
                     <a href="https://nexyroth.github.io/fake_v1/" target="_blank" class="btn-outline purple" style="font-size:0.85rem; padding:0.4rem 1.6rem;">
                         <i class="fas fa-arrow-right"></i> Mở Toolkit
@@ -540,8 +601,8 @@
                     <span class="status-badge planned">PLANNED</span>
                     <h3 style="font-weight: 600; font-size: 1.4rem;">Dự án tiếp theo</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin: 0.6rem 0 1rem;">
-                        Một dự án mới đang trong giai đoạn ý tưởng. Có thể là một công cụ AI,
-                        một game mới, hoặc một ứng dụng hữu ích khác. Theo dõi để cập nhật!
+                        Một dự án mới đang trong giai đoạn ý tưởng. Có thể là AI, game mới,
+                        hoặc công cụ hữu ích. Theo dõi để cập nhật!
                     </p>
                     <span style="color: var(--text-secondary); font-size: 0.85rem;"><i class="fas fa-hourglass-half"></i> Sắp ra mắt</span>
                 </div>
@@ -574,8 +635,7 @@
             </div>
             <div style="margin-top: 2rem; padding: 1.2rem 1.8rem; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
                 <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
-                    <span style="color: var(--cyan-neon);">⏺</span> Mình không tự đánh giá trình độ bằng số phần trăm.
-                    Mỗi công nghệ là một công cụ, và mình đang học cách sử dụng chúng tốt hơn qua từng project.
+                    <span style="color: var(--cyan-neon);">⏺</span> Mỗi công nghệ là một công cụ — mình đang học cách sử dụng chúng tốt hơn qua từng project.
                 </p>
             </div>
         </div>
@@ -711,25 +771,24 @@
                 animateParticles();
             }
 
-            // ===== GSAP HERO ANIMATION (không dùng ScrollTrigger) =====
+            // ===== GSAP HERO =====
             gsap.from('.hero-title .neon', {
                 duration: 1.2,
                 y: 60,
                 opacity: 0,
                 ease: 'power3.out',
-                stagger: 0.15,
                 delay: 0.2
             });
-            gsap.from('.hero-title .neon-green', {
-                duration: 1.2,
-                y: 60,
+            gsap.from('.hero-tagline', {
+                duration: 1,
+                y: 40,
                 opacity: 0,
                 ease: 'power3.out',
                 delay: 0.4
             });
-            gsap.from('.hero-sub', {
-                duration: 1,
-                y: 40,
+            gsap.from('.hero-meta', {
+                duration: 0.9,
+                y: 30,
                 opacity: 0,
                 ease: 'power3.out',
                 delay: 0.6
@@ -749,7 +808,7 @@
                 delay: 0.1
             });
 
-            // ===== INTERSECTION OBSERVER FOR REVEAL =====
+            // ===== INTERSECTION OBSERVER =====
             var revealElements = document.querySelectorAll('.reveal');
             if (revealElements.length > 0) {
                 var observer = new IntersectionObserver(function(entries) {
@@ -765,10 +824,6 @@
                 revealElements.forEach(function(el) {
                     observer.observe(el);
                 });
-
-                // Nếu đã hiển thị thì add class luôn (cho những phần tử đã visible)
-                // Thực tế observer sẽ xử lý khi scroll, nhưng nếu phần tử đã visible ngay từ đầu thì vẫn được kích hoạt.
-                // Để đảm bảo, ta có thể check ngay khi load
                 setTimeout(function() {
                     revealElements.forEach(function(el) {
                         var rect = el.getBoundingClientRect();
@@ -779,7 +834,7 @@
                 }, 100);
             }
 
-            // ===== VANILLA TILT (chỉ nếu có phần tử) =====
+            // ===== VANILLA TILT =====
             var tiltElements = document.querySelectorAll('.tilt-element');
             if (tiltElements.length > 0 && typeof VanillaTilt !== 'undefined') {
                 VanillaTilt.init(tiltElements, {
@@ -809,8 +864,8 @@
             }
 
             console.log('┌─────────────────────────────────────────────┐');
-            console.log('│  NEXYROTH HUB  ·  v3.0 (stable)            │');
-            console.log('│  Học · Xây dựng · Thử nghiệm              │');
+            console.log('│  NEXYROTH  ·  Digital Builder              │');
+            console.log('│  Ý tưởng → Thử nghiệm → Xây dựng → Mở rộng │');
             console.log('│  Built with ❤️  & Vanilla JS              │');
             console.log('└─────────────────────────────────────────────┘');
 
